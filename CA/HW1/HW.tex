@@ -24,7 +24,7 @@
 \vspace{0.5cm}
 
 % 题目开始
-\textbf{【单选】下列关于冯·诺依曼结构描述错误的是（\quad ）}
+\textbf{【单选】下列关于冯·诺依曼结构描述错误的是（A）}
 \begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
     \item 数据与程序采用十进制的方式进行存储 
     \item 最早出自《关于EDVAC的报告草案》 
@@ -33,7 +33,7 @@
 \end{enumerate}
 \vspace{0.4cm}
 
-\textbf{【单选】下列关于冯·诺依曼结构计算机中英文对照关系错误的是（\quad ）}
+\textbf{【单选】下列关于冯·诺依曼结构计算机中英文对照关系错误的是（C）}
 \begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
     \item 运算器——CA 
     \item 控制器——CC 
@@ -44,7 +44,7 @@
 \end{enumerate}
 \vspace{0.4cm}
 
-\textbf{【多选】下列哪些部件并称为计算机中的“大脑”？（\quad ）}
+\textbf{【多选】下列哪些部件并称为计算机中的“大脑”？（AB）}
 \begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
     \item 控制器 
     \item 运算器 
@@ -54,7 +54,7 @@
 \end{enumerate}
 \vspace{0.4cm}
 
-\textbf{【多选】下列哪些设备属于输入设备？（\quad ）}
+\textbf{【多选】下列哪些设备属于输入设备？（ABEF）}
 \begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
     \item 鼠标 
     \item 键盘 
@@ -66,7 +66,7 @@
 \end{enumerate}
 \vspace{0.4cm}
 
-\textbf{【多选】在传统台式机主板的南北桥结构中，下列设备中哪些属于南桥？（\quad ）}
+\textbf{【多选】在传统台式机主板的南北桥结构中，下列设备中哪些属于南桥？（ACDF）}
 \begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
     \item U盘
     \item 内存
@@ -79,20 +79,20 @@
 \vspace{0.4cm}
 
 
-\textbf{【单选】在计算机结构的简化模型中，下列哪个寄存器是用于记录存储单元地址的？（\quad ）}
+\textbf{【单选】在计算机结构的简化模型中，下列哪个寄存器是用于记录存储单元地址的？（C）}
 \begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
     \item IR 
     \item PC 
     \item MAR
     \item MDR
-    \item R0
+    \item $R_0$
 \end{enumerate}
 \vspace{0.4cm}
 
 
-\textbf{【多选】执行一条指令的全过程中，指令的编码会出现在CPU中的哪些部件？（\quad ）}
+\textbf{【多选】执行一条指令的全过程中，指令的编码会出现在CPU中的哪些部件？（BC）}
 \begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
-    \item R0
+    \item $R_0$
     \item IR
     \item MDR
     \item MAR
@@ -130,4 +130,10 @@
     \item 每条指令的运行结束后，哪些寄存器和存储单元发生了变化、发生了什么样的变化？
 \end{enumerate}
 
+\textbf{解答：}
+\begin{enumerate}[label=（\arabic*）, itemsep=4pt, parsep=0pt]
+    \item 会运行3条指令，分别是地址0011、0100、0101处的指令。
+    \item 0011读存储器2次（一次为读取指令，另一次为将地址0001处的内容读入$R_0$，写存储器0次；\\0100读存储器2次（一次为读取指令，另一次为将地址0010处的内容读入ALU中，写存储器1次（将结果写入地址0010处）；\\0101读存储器1次（读取指令后停机）。
+    \item 0011指令运行后，PC自加变为0100，$R_0$的值变为0100 0111；\\0100指令运行后，PC自加变为0101，地址0010处的内容变为0100 1100；\\0101指令运行后，PC自加变为0110，停机。
+\end{enumerate}
 \end{document}
