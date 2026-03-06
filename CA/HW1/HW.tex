@@ -1,0 +1,133 @@
+\documentclass[12pt, a4paper]{ctexart}
+
+% 设置页面边距
+\usepackage{geometry}
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+% 用于自定义列表格式
+\usepackage{enumitem}
+
+% 用于绘制专业的三线表
+\usepackage{booktabs}
+
+% 取消段落首行缩进，更适合试卷排版
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+% 标题部分
+\begin{center}
+    \LARGE \textbf{《AI2803-计算机体系结构》作业1}
+    \\
+    \large \textbf{姓名：韩岳成 \quad 学号：524531910029}
+\end{center}
+\vspace{0.5cm}
+
+% 题目开始
+\textbf{【单选】下列关于冯·诺依曼结构描述错误的是（\quad ）}
+\begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
+    \item 数据与程序采用十进制的方式进行存储 
+    \item 最早出自《关于EDVAC的报告草案》 
+    \item 采用“存储程序”的思想 
+    \item 工作时自动从存储器中取出指令加以执行
+\end{enumerate}
+\vspace{0.4cm}
+
+\textbf{【单选】下列关于冯·诺依曼结构计算机中英文对照关系错误的是（\quad ）}
+\begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
+    \item 运算器——CA 
+    \item 控制器——CC 
+    \item 管理器——M 
+    \item 输入设备——I 
+    \item 外部记录设备——R 
+    \item 输出设备——O
+\end{enumerate}
+\vspace{0.4cm}
+
+\textbf{【多选】下列哪些部件并称为计算机中的“大脑”？（\quad ）}
+\begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
+    \item 控制器 
+    \item 运算器 
+    \item 外部存储器 
+    \item 主存储器 
+    \item 寄存器
+\end{enumerate}
+\vspace{0.4cm}
+
+\textbf{【多选】下列哪些设备属于输入设备？（\quad ）}
+\begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
+    \item 鼠标 
+    \item 键盘 
+    \item 显示器 
+    \item 打印机
+    \item 麦克风 
+    \item 摄像头 
+    \item 音箱
+\end{enumerate}
+\vspace{0.4cm}
+
+\textbf{【多选】在传统台式机主板的南北桥结构中，下列设备中哪些属于南桥？（\quad ）}
+\begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
+    \item U盘
+    \item 内存
+    \item 键盘
+    \item 鼠标
+    \item PCIe显卡
+    \item 硬盘
+    \item CPU
+\end{enumerate}
+\vspace{0.4cm}
+
+
+\textbf{【单选】在计算机结构的简化模型中，下列哪个寄存器是用于记录存储单元地址的？（\quad ）}
+\begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
+    \item IR 
+    \item PC 
+    \item MAR
+    \item MDR
+    \item R0
+\end{enumerate}
+\vspace{0.4cm}
+
+
+\textbf{【多选】执行一条指令的全过程中，指令的编码会出现在CPU中的哪些部件？（\quad ）}
+\begin{enumerate}[label=\Alph*., itemsep=2pt, parsep=0pt]
+    \item R0
+    \item IR
+    \item MDR
+    \item MAR
+    \item PC
+    \item ALU
+\end{enumerate}
+\vspace{0.6cm}
+
+\newpage
+
+\textbf{【问答题】课程中讲解的指令是“ADD R, M”，如果换成“ADD M, R”（即运算结果存入存储器），指令编码规则不变，即第0-1位表示操作码，第2-3位表示寄存器编号，第4-7位表示存储器单元地址。假设当前PC为0011，存储器状态如下：}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{cc}
+        \toprule
+        \textbf{地址} & \textbf{内容} \\
+        \midrule
+        0001 & 0100 0111 \\
+        0010 & 0000 0101 \\
+        0011 & 0000 0001 \\
+        0100 & 0100 0010 \\
+        0101 & 1100 0111 \\
+        0110 & 0010 1010 \\
+        0111 & 0001 0110 \\
+        1000 & 1001 0001 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\textbf{请回答以下问题：}
+\begin{enumerate}[label=（\arabic*）, itemsep=4pt, parsep=0pt]
+    \item 仅考虑已有信息，会运行几条指令？
+    \item 每条指令的运行过程中，分别会读几次存储器、写几次存储器？
+    \item 每条指令的运行结束后，哪些寄存器和存储单元发生了变化、发生了什么样的变化？
+\end{enumerate}
+
+\end{document}
