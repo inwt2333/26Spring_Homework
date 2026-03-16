@@ -1,0 +1,136 @@
+\documentclass[10pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, color, framed, graphicx, hyperref, mathrsfs, float}
+
+\title{\textbf{3月13日作业}}
+\author{韩岳成 524531910029}
+\date{\today}
+\linespread{1.5}
+\definecolor{shadecolor}{RGB}{241, 241, 255}
+\newcounter{problemname}
+\newenvironment{problem}{\begin{shaded}\stepcounter{problemname}\par\noindent\textbf{题目\arabic{problemname}. }}{\end{shaded}\par}
+\newenvironment{solution}{\par\noindent\textbf{解答. }}{\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\par}
+\everymath{\displaystyle}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+    列出以下复合命题的真值表.（其中支命题$p,q,r,s$视为命题变元.）
+
+    (3) $p\to(q\to r)$
+
+    (5) $(p\leftrightarrow \neg q) \lor q$
+
+    (9) $\lnot\left(p\lor(q\land r)\right)\leftrightarrow((p\lor q)\land(p\lor r))$
+
+    (12) $\lnot(p\land q)\leftrightarrow((\lnot p)\lor(\lnot q))$
+    
+\end{problem}
+
+\begin{solution}
+    (3)
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $p$ & $q$ & $r$ & $q \to r$ & $p \to (q \to r)$ \\
+        \hline
+        1 & 1 & 1 & 1 & 1 \\
+        1 & 1 & 0 & 0 & 0 \\
+        1 & 0 & 1 & 1 & 1 \\
+        1 & 0 & 0 & 1 & 1 \\
+        0 & 1 & 1 & 1 & 1 \\
+        0 & 1 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 1 & 1 \\
+        0 & 0 & 0 & 1 & 1 \\
+        \hline
+        \end{tabular}
+    \end{table}
+    (5)
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $p$ & $q$ & $\lnot q$ & $p \leftrightarrow \lnot q$ & $(p \leftrightarrow \lnot q) \lor q$ \\
+        \hline
+        1 & 1 & 0 & 0 & 1 \\
+        1 & 0 & 1 & 1 & 1 \\
+        0 & 1 & 0 & 1 & 1 \\
+        0 & 0 & 1 & 0 & 0 \\
+        \hline
+        \end{tabular}
+    \end{table}
+    (9)
+    令 $A = \lnot(p\lor(q\land r))$, $B = (p\lor q)\land(p\lor r)$
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+        \hline
+        $p$ & $q$ & $r$ & $q \land r$ & $p \lor (q \land r)$ & $A$ & $p \lor q$ & $p \lor r$ & $B$ & $A \leftrightarrow B$ \\
+        \hline
+        1 & 1 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 0 \\
+        1 & 1 & 0 & 0 & 1 & 0 & 1 & 1 & 1 & 0 \\
+        1 & 0 & 1 & 0 & 1 & 0 & 1 & 1 & 1 & 0 \\
+        1 & 0 & 0 & 0 & 1 & 0 & 1 & 1 & 1 & 0 \\
+        0 & 1 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 0 \\
+        0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+        \hline
+        \end{tabular}
+    \end{table}
+
+    (12)
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        $p$ & $q$ & $p \land q$ & $\lnot(p \land q)$ & $\lnot p$ & $\lnot q$ & $(\lnot p) \lor (\lnot q)$ & $\lnot(p\land q)\leftrightarrow((\lnot p)\lor(\lnot q))$ \\
+        \hline
+        1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 \\
+        1 & 0 & 0 & 1 & 0 & 1 & 1 & 1 \\
+        0 & 1 & 0 & 1 & 1 & 0 & 1 & 1 \\
+        0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
+        \hline
+        \end{tabular}
+    \end{table}
+\end{solution}
+
+\begin{problem}
+    写出由$X_2 = \{x_1, x_2\}$生成的公式集$L(X_2)$的三个层次：$L_0, L_1$ 和 $L_2$.
+\end{problem}
+
+\begin{solution}
+$$
+L_0 = \{ x_1, x_2 \}
+$$
+
+$$
+L_1 = \{ (\lnot x_1), (\lnot x_2), (x_1 \to x_1), (x_1 \to x_2), (x_2 \to x_1), (x_2 \to x_2) \}
+$$
+
+\begin{align*}
+L_2 = \{
+    % 1. 对L1使用非运算 (6个)
+    & (\lnot (\lnot x_1)), \quad (\lnot (\lnot x_2)), \\
+    & (\lnot (x_1 \to x_1)), \quad (\lnot (x_1 \to x_2)), \quad (\lnot (x_2 \to x_1)), \quad (\lnot (x_2 \to x_2)), \\
+    % 2. L0 -> L1 (x1在前，6个)
+    & (x_1 \to (\lnot x_1)), \quad (x_1 \to (\lnot x_2)), \\
+    & (x_1 \to (x_1 \to x_1)), \quad (x_1 \to (x_1 \to x_2)), \quad (x_1 \to (x_2 \to x_1)), \quad (x_1 \to (x_2 \to x_2)), \\
+    % 3. L0 -> L1 (x2在前，6个)
+    & (x_2 \to (\lnot x_1)), \quad (x_2 \to (\lnot x_2)), \\
+    & (x_2 \to (x_1 \to x_1)), \quad (x_2 \to (x_1 \to x_2)), \quad (x_2 \to (x_2 \to x_1)), \quad (x_2 \to (x_2 \to x_2)), \\
+    % 4. L1 -> L0 (x1在后，6个)
+    & ((\lnot x_1) \to x_1), \quad ((\lnot x_2) \to x_1), \\
+    & ((x_1 \to x_1) \to x_1), \quad ((x_1 \to x_2) \to x_1), \quad ((x_2 \to x_1) \to x_1), \quad ((x_2 \to x_2) \to x_1), \\
+    % 5. L1 -> L0 (x2在后，6个)
+    & ((\lnot x_1) \to x_2), \quad ((\lnot x_2) \to x_2), \\
+    & ((x_1 \to x_1) \to x_2), \quad ((x_1 \to x_2) \to x_2), \quad ((x_2 \to x_1) \to x_2), \quad ((x_2 \to x_2) \to x_2) 
+\}
+\end{align*}
+
+\end{solution}
+\end{document}
