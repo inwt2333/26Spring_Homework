@@ -1,0 +1,241 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, color, framed, graphicx, hyperref, mathrsfs, float}
+
+\title{\textbf{3月17日作业}}
+\author{韩岳成 524531910029}
+\date{\today}
+\linespread{1.5}
+\definecolor{shadecolor}{RGB}{241, 241, 255}
+\newcounter{problemname}
+\newenvironment{problem}{\begin{shaded}\stepcounter{problemname}\par\noindent\textbf{题目\arabic{problemname}. }}{\end{shaded}\par}
+\newenvironment{solution}{\par\noindent\textbf{解答. }}{\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\par}
+\everymath{\displaystyle}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+请将十进制数 46258 转换为十六进制，并写出其对应的16位二进制表示（假设使用16位无符号整数）。
+\end{problem}
+\begin{solution}
+\[(\text{46258})_{10} = (\text{0xB4B2})_{16} = (1011\,0100\,1011\,0010)_{2}\]
+\end{solution}
+
+\begin{problem}
+已知 \verb|unsigned char a = 0x69|，\verb|unsigned char b = 0x55|，请写出 \verb|a & b|、\verb+a | b+、\verb|a ^ b|、\verb|~a| 的结果（用十六进制表示）。
+\end{problem}
+\begin{solution}
+\[(\text{0x69})_{16} = (0110\,1001)_2, \quad (\text{0x55})_{16} = (0101\,0101)_2\]
+因此
+\begin{itemize}
+    \item \verb|a & b| = \verb|0100 0001| = \textbf{\texttt{0x41}}
+    \item \verb|a | b| = \verb|0111 1101| = \textbf{\texttt{0x7D}}
+    \item \verb|a ^ b| = \verb|0011 1100| = \textbf{\texttt{0x3C}}
+    \item \verb|~a| = \verb|1001 0110| = \textbf{\texttt{0x96}}
+\end{itemize}
+\end{solution}
+
+
+\begin{problem}
+假设使用16位补码表示整数，请计算 $15213 + 30426$ 的结果。
+\end{problem}
+\begin{solution}
+\begin{align*}
+    (15213)_{10} + (30426)_{10} &= (0011\,1011\,0110\,1101)_2 + (0111\,0110\,1101\,1010)_2
+    \\&= (1011\,0010\,0100\,0111)_2
+    \\&= (-19897)_{10}
+\end{align*}
+\end{solution}
+
+\begin{problem}
+请计算两个16位无符号整数 15213 和 30426 的乘积。
+\end{problem}
+\begin{solution}
+\begin{align*}
+    (15213)_{10} \times (30426)_{10} &= (0011\,1011\,0110\,1101)_2 \times (0111\,0110\,1101\,1010)_2
+    \\&= (1101\,1000\,1101\,0010)_2
+    \\&= (55506)_{10}
+\end{align*}
+\end{solution}
+
+\begin{problem}
+假设 \verb|x| 的类型为 \verb|int|，考虑以下4个条件，请使用比特位操作（与、或、非、异或、移位），分别编写一条C语言表达式，当条件满足时表达式结果为1、条件不满足时表达式结果为0：
+\begin{enumerate}
+    \item[(1)] \verb|x| 的任意比特位等于1。
+    \item[(2)] \verb|x| 的任意比特位等于0。
+    \item[(3)] \verb|x| 的最高位字节中的任意比特位等于1。
+    \item[(4)] \verb|x| 的最低位字节中的任意比特位等于1。
+\end{enumerate}
+\end{problem}
+\begin{solution}
+\begin{enumerate}
+    \item[(1)] \textbf{\texttt{!!x}} 
+    \item[(2)] \textbf{\texttt{!!(\textasciitilde x)}}
+    \item[(3)] \textbf{\texttt{!!(x \& 0xFF000000)}} （提取最高位字节，若非0则代表有比特位为1）
+    \item[(4)] \textbf{\texttt{!!(x \& 0xFF)}} （提取最低位字节）
+\end{enumerate}
+\end{solution}
+
+\begin{problem}
+假设内存中存储的字节内容如下， \verb|0x100| 和 \verb|0x104| 起分别对应两个32位有符号整型数，请分别写出在大端序和小端序情况下，这两个数相加和相乘的结果（用十六进制表示）。
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        地址 & \verb|0x0100| & \verb|0x0101| & \verb|0x0111| & \verb|0x1000| \\
+        \hline
+        内容（十六进制） & \verb|12| & \verb|34| & \verb|56| & \verb|78| \\
+        \hline
+    \end{tabular}
+    
+    \vspace{0.5em}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        地址 & \verb|0x1001| & \verb|0x1010| & \verb|0x1011| & \verb|0x1100| \\
+        \hline
+        内容（十六进制） & \verb|1A| & \verb|3B| & \verb|5E| & \verb|7F| \\
+        \hline
+    \end{tabular}
+\end{center}
+\end{problem}
+\begin{note}
+怀疑是题目错误？因为这8个地址在内存中不是连续的，此处当作连续的 \texttt{0x0100} 到 \texttt{0x0107}。
+\end{note}
+\begin{solution}
+位于 \verb|0x0100| 的4个字节为 \verb|12 34 56 78|，位于 \verb|0x0104| 的4个字节为 \verb|1A 3B 5E 7F|。
+
+大端序情况下：
+\begin{itemize}
+    \item 数 $A = \text{0x12345678}$
+    \item 数 $B = \text{0x1A3B5E7F}$
+    \item 相加结果：$\text{0x12345678} + \text{0x1A3B5E7F} =$ \textbf{\texttt{0x2C6FB4F7}}
+    \item 相乘结果：$\text{0x12345678} \times \text{0x1A3B5E7F}$ 的低32位截断结果为 \textbf{\texttt{0x5D5EF588}}
+\end{itemize}
+
+小端序情况下：
+\begin{itemize}
+    \item 数 $A = \text{0x78563412}$
+    \item 数 $B = \text{0x7F5E3B1A}$
+    \item 相加结果：$\text{0x78563412} + \text{0x7F5E3B1A} =$ \textbf{\texttt{0xF7B46F2C}}
+    \item 相乘结果：$\text{0x78563412} \times \text{0x7F5E3B1A}$ 的低32位截断结果为 \textbf{\texttt{0x235D6FD4}}
+\end{itemize}
+\end{solution}
+
+\begin{problem}
+假设在32位小端序机器上执行以下代码，请写出从 \verb|buf|[0] 到 \verb|buf|[7] 每个字节的十六进制表示。
+\begin{verbatim}
+int a = 0x12345678;
+short b = 0x9ABC;
+char c = 0xDE;
+unsigned char buf[8] = {0};
+memcpy(buf, &a, sizeof(a));
+memcpy(buf + 4, &b, sizeof(b));
+memcpy(buf + 6, &c, sizeof(c));
+\end{verbatim}
+\end{problem}
+\begin{solution}
+\texttt{buf[0]=0x78, buf[1]=0x56, buf[2]=0x34, buf[3]=0x12, \\ buf[4]=0xBC, buf[5]=0x9A, buf[6]=0xDE, buf[7]=0x00}
+\end{solution}
+
+\begin{problem}
+将十进制数 -12.25 转换为 IEEE 754 单精度浮点数的二进制表示。
+\end{problem}
+\begin{solution}
+\[12.25 = 12 + 0.25 = 1100.01_2 = 1.10001_2 \times 2^3\]
+
+真实指数为 $3$，偏移量(Bias)为 $127$，$3 + 127 = 130$，对应的8位二进制为 \texttt{10000010}。
+
+去掉隐藏的最高位1，剩下 \texttt{10001}，补零至23位为 \texttt{10001000000000000000000}。
+
+因此，IEEE 754 单精度浮点数的32位二进制表示为：\\
+\textbf{\texttt{1 10000010 10001000000000000000000}}
+\end{solution}
+
+\begin{problem}
+参考课件第16页，请写出 FP8 E5M2 浮点数类型（1位符号位，5位exp域，2位frac域）中满足以下条件的二进制表示及其十进制数值（仅考虑非负数部分）。
+\begin{enumerate}
+    \item[(1)] 最接近0的数。
+    \item[(2)] 最大的反常值。
+    \item[(3)] 最小的常规值。
+    \item[(4)] 最接近1但比1小的数。
+    \item[(5)] 最接近1但比1大的数。
+    \item[(6)] 最大的常规值。
+\end{enumerate}
+\end{problem}
+\begin{solution}
+\begin{itemize}
+    \item \texttt{0 00000 01}
+    \item \texttt{0 00000 11}
+    \item \texttt{0 00001 00}
+    \item \texttt{0 01110 11}
+    \item \texttt{0 01111 01}
+    \item \texttt{0 11110 11}
+\end{itemize}
+\end{solution}
+
+\begin{problem}
+在32位浮点数可表示的数值中，仅考虑非负数部分，从哪个整数 $N$ 开始会出现 \verb|float(N+1) == float(N)|？
+\end{problem}
+\begin{solution}
+32位浮点数包含23位尾数域。加上隐藏的最高位1，它能够无损表示的最大精度的二进制位数为24位。
+
+当整数达到 $N = 2^{24} = 16777216$ 时，其二进制表示为1后面跟24个0，占用25个比特。它仍然可以精确表示。
+
+但对于 $N+1 = 16777217$，其二进制表示为1后面跟23个0再跟1个1。当转换为单精度浮点数时，必须要舍入到24位精度。
+
+根据“向偶数舍入”的规则，最低有效位（第24位）是0，后面的舍弃位刚好是一半，因此向下舍入，变回 $16777216.0$。
+
+因此，出现 \verb|float(N+1) == float(N)| 的起始整数是 $N = 2^{24} = $ \textbf{\texttt{16777216}}。
+\end{solution}
+
+\begin{problem}
+在以下程序中，假设 \verb|half| 表示16位浮点数（1位符号位，5位exp域，10位frac域），请写出变量 \verb|c| 和 \verb|d| 的十进制表示，并解释在哪些过程中发生了向上或向下舍入。
+\begin{verbatim}
+half a = 1.23;
+half b = 3.14;
+half c = a + b;
+half d = a * b;
+\end{verbatim}
+\end{problem}
+\begin{solution}
+初始化时，需要将十进制数转为10位精度的 \verb|half| 浮点数：
+\begin{itemize}
+    \item $1.23 = 1 + 0.23 = 1 + \frac{235.52}{1024}$，尾数部分依据就近舍入规则\textbf{向上舍入}到 236。所以 \verb|a| 的实际存储值为 $1 + \frac{236}{1024} = 1.23046875$。
+    \item $3.14 = 2 \times 1.57 = 2 \times (1 + \frac{583.68}{1024})$。尾数部分依据就近舍入规则\textbf{向上舍入}到 584。所以 \verb|b| 的实际存储值为 $2 \times (1 + \frac{584}{1024}) = 3.140625$。
+\end{itemize}
+加法 \verb|c = a + b| 运算：
+\begin{itemize}
+    \item 精确加法结果为 $1.23046875 + 3.140625 = 4.37109375$。此数值转换为 \verb|half|：$4.37109375 = 4 \times (1 + \frac{95}{1024})$，刚好可以用10位精确表示，\textbf{无需舍入}。
+    \item 变量 \verb|c| 的十进制表示为：\textbf{\texttt{4.37109375}}。
+\end{itemize}
+乘法 \verb|d = a * b| 运算：
+\begin{itemize}
+    \item 精确乘法结果为 $1.23046875 \times 3.140625 = 3.86444091796875$。转换：$3.86444091796875 = 2 \times (1 + \frac{954.59375}{1024})$。
+    \item 尾数 $954.59375$ 需要舍入为整数。$0.59375 > 0.5$，故\textbf{向上舍入}为 955。
+    \item 变量 \verb|d| 存储值为 $2 \times (1 + \frac{955}{1024}) = $ \textbf{\texttt{3.865234375}}。
+\end{itemize}
+\end{solution}
+
+\begin{problem}
+在C语言程序中，假设变量 \verb|x, l, f, d| 的类型分别为 \verb|int, long, float, double|，并假设 \verb|f| 和 \verb|d| 均不是 Inf 或 NaN，考虑以下逻辑表达式：
+\begin{enumerate}
+    \item[(1)] \verb|l == (long)(double) l;|
+    \item[(2)] \verb|f == (float)(double) f;|
+    \item[(3)] \verb|f == -(-f);|
+    \item[(4)] \verb|d < 0.0| $\Rightarrow$ \verb|((d*2) < 0.0)|
+    \item[(5)] \verb|(d+f)-d == f;|
+\end{enumerate}
+请分别写出是否恒成立，并解释原因。
+\end{problem}
+\begin{solution}
+\begin{enumerate}
+    \item[(1)] \textbf{不恒成立}。如果是在64位操作系统中，\verb|long| 为 64位整数，它能表达的范围远大于 \verb|double| 的 53 位尾数精度。如果 \verb|l| 的数值极大且低位有非零值，转为 \verb|double| 时会发生精度丢失，再转回 \verb|long| 就与原值不同了。
+    \item[(2)] \textbf{恒成立}。\verb|double| 有 53 位精度，远大于 \verb|float| 的 24 位精度。任意普通的 \verb|float| 值都可以被无损且精确地表示为一个 \verb|double| 值，再转型回 \verb|float| 数值不会发生任何改变。
+    \item[(3)] \textbf{恒成立}。浮点数的取反操作（\verb|-f|）在硬件实现上仅仅是翻转其最高位的符号位（Sign bit），两次取反后符号位还原，不涉及任何精度损失。
+    \item[(4)] \textbf{恒成立}。如果 $d < 0.0$，说明 $d$ 是负数，符号位为1。$d \times 2$ 要么是正常的更大的负数，要么下溢到负无穷大，但无论如何，符号位仍然保持为1。在浮点数比较中，负数或负无穷大都依然严格小于 $0.0$。
+    \item[(5)] \textbf{不恒成立}。浮点数的加减法不满足数学上的结合律和消去律。如果 \verb|d| 是一个极大值，而 \verb|f| 是一个很小的值，执行 \verb|d+f| 时由于 \verb|double| 精度的限制，结果会直接舍入保留为 \verb|d|，导致 \verb|(d+f)-d| 计算结果变为 $0.0$，与原先的 \verb|f| 不等。
+\end{enumerate}
+\end{solution}
+
+\end{document}
