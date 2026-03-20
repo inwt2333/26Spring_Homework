@@ -1,0 +1,114 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, color, framed, graphicx, hyperref, mathrsfs}
+\usepackage[margin=2cm]{geometry}
+
+\title{\textbf{3月18日作业}}
+\author{韩岳成 524531910029}
+\date{\today}
+\linespread{1.5}
+\definecolor{shadecolor}{RGB}{241, 241, 255}
+\newcounter{problemname}
+\newenvironment{problem}{\begin{shaded}\stepcounter{problemname}\par\noindent\textbf{题目\arabic{problemname}. }}{\end{shaded}\par}
+\newenvironment{solution}{\par\noindent\textbf{解答. }}{\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\par}
+\everymath{\displaystyle}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+    写出以下公式在L中的“证明”（即证明它们是L的定理）
+    \begin{enumerate}
+        \item $(x_1 \to x_2)\to ((\lnot x_1 \to \lnot x_2) \to (x_2 \to x_1))$
+        \item $((x_1 \to (x_2 \to x_3)) \to (x_1 \to x_2)) \to ((x_1 \to (x_2 \to x_3)) \to (x_1 \to x_3))$
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    1.
+    \begin{enumerate}
+        \item[(1)] $(\lnot x_1 \to \lnot x_2) \to (x_2 \to x_1)$ \hfill (L3)
+        \item[(2)] $((\lnot x_1 \to \lnot x_2) \to (x_2 \to x_1)) \to ((x_1 \to x_2)\to ((\lnot x_1 \to \lnot x_2) \to (x_2 \to x_1)))$ \hfill (L1)
+        \item[(3)] $(x_1 \to x_2)\to ((\lnot x_1 \to \lnot x_2) \to (x_2 \to x_1))$ \hfill ((1), (2), MP)
+    \end{enumerate}
+    
+    2.
+    \begin{enumerate}
+        \item[(1)] $(x_1 \to (x_2 \to x_3)) \to ((x_1 \to x_2) \to (x_1 \to x_3))$ \hfill (L2)
+        \item[(2)] $((x_1 \to (x_2 \to x_3)) \to ((x_1 \to x_2) \to (x_1 \to x_3))) \to (((x_1 \to (x_2 \to x_3)) \to (x_1 \to x_2)) \to ((x_1 \to (x_2 \to x_3)) \to (x_1 \to x_3)))$ \hfill (L2)
+        \item[(3)] $((x_1 \to (x_2 \to x_3)) \to (x_1 \to x_2)) \to ((x_1 \to (x_2 \to x_3)) \to (x_1 \to x_3))$ \hfill ((1), (2), MP)
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+证明下面的结论：
+\begin{enumerate}
+    \item[5.] $\{ p\to q, q \to r \} \vdash p \to r$.
+    \item[2.] $\{ \lnot\lnot p\} \vdash p$.
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+    5.
+    \begin{enumerate}
+        \item[(1)] $q \to r$ \hfill (前提)
+        \item[(2)] $(q \to r) \to (p \to (q \to r))$ \hfill (L1)
+        \item[(3)] $p \to (q \to r)$ \hfill ((1), (2), MP)
+        \item[(4)] $(p \to (q \to r)) \to ((p \to q) \to (p \to r))$ \hfill (L2)
+        \item[(5)] $(p \to q) \to (p \to r)$ \hfill ((3), (4), MP)
+        \item[(6)] $p \to q$ \hfill (前提)
+        \item[(7)] $p \to r$ \hfill ((5), (6), MP)
+    \end{enumerate}
+
+    2.
+    \begin{enumerate}
+        \item[(1)] $\lnot\lnot p$ \hfill (前提)
+        \item[(2)] $\lnot\lnot p \to (\lnot\lnot\lnot\lnot p \to \lnot\lnot p)$ \hfill (L1)
+        \item[(3)] $\lnot\lnot\lnot\lnot p \to \lnot\lnot p$ \hfill ((1), (2), MP)
+        \item[(4)] $\lnot p \to \lnot\lnot\lnot p$ \hfill (L3)
+        \item[(5)] $\lnot\lnot p \to p$ \hfill $\star$(L3)
+        \item[(6)] $p$ \hfill ((1), (5), MP)
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+    利用演绎定理证明以下公式是L的定理：
+    \begin{enumerate}
+        \item[2.] $\left(q\rightarrow p\right)\rightarrow\left(\lnot p\rightarrow\lnot q\right).$(换位律)
+        \item[3.] $\left((p\to q)\to p\right)\to p.$ (Peirce 律)
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    2. 由演绎定理，只需证明$\{ q \to p\} \vdash \lnot p \to \lnot q$。
+
+    首先，我们证明引理 $p \to \lnot\lnot p$：
+    \begin{enumerate}
+        \item[(1)] $(\lnot\lnot\lnot p \to \lnot p) \to (p \to \lnot\lnot p)$ \hfill (L3)
+        \item[(2)] $\lnot\lnot\lnot p \to \lnot p$ \hfill (由于前面已证 $\{ \lnot\lnot p\} \vdash p$，故 $\vdash \lnot\lnot p \to p$，在此取 $p = \lnot p$)
+        \item[(3)] $p \to \lnot\lnot p$ \hfill ((1), (2), MP)
+    \end{enumerate}
+    接下来，利用这个引理证明原命题：
+    \begin{enumerate}
+        \item[(1)] $q \to p$ \hfill (前提)
+        \item[(2)] $p \to \lnot\lnot p$ \hfill (已证引理)
+        \item[(3)] $q \to \lnot\lnot p$ \hfill ((1), (2), HS)
+        \item[(4)] $\lnot\lnot q \to q$ \hfill (由于前面已证 $\vdash \lnot\lnot q \to q$)
+        \item[(5)] $\lnot\lnot q \to \lnot\lnot p$ \hfill ((4), (3), HS)
+        \item[(6)] $(\lnot\lnot q \to \lnot\lnot p) \to (\lnot p \to \lnot q)$ \hfill (L3)
+        \item[(7)] $\lnot p \to \lnot q$ \hfill ((5), (6), MP)
+    \end{enumerate}
+
+    3. 由演绎定理，只需证明$\{ (p \to q) \to p \} \vdash p$。
+    \begin{enumerate}
+        \item[(1)] $(p \to q) \to p$ \hfill (前提)
+        \item[(2)] $\lnot p \to (p \to q)$ \hfill (否定前件律)
+        \item[(3)] $\lnot p \to p$ \hfill ((2), (1), HS)
+        \item[(4)] $(\lnot p \to p) \to p$ \hfill (否定肯定律)
+        \item[(5)] $p$ \hfill ((3), (4), MP)
+    \end{enumerate}
+
+\end{solution}
+\end{document}

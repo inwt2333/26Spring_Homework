@@ -3,3 +3,8 @@
 *.synctex.gz
 *.out
 .DS_Store
+NLP/HW3/fineweb
+NLP/HW3/fineweb-edu-llama3-annotations
+NLP/HW3/dataset
+NLP/HW3/model.bin
+NLP/HW3/output
