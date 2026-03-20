@@ -79,11 +79,11 @@
 \end{solution}
 
 \begin{problem}
-假设内存中存储的字节内容如下， \verb|0x100| 和 \verb|0x104| 起分别对应两个32位有符号整型数，请分别写出在大端序和小端序情况下，这两个数相加和相乘的结果（用十六进制表示）。
+假设内存中存储的字节内容如下， 地址\verb|0100| 和 地址\verb|1001| 起分别对应两个32位有符号整型数，请分别写出在大端序和小端序情况下，这两个数相加和相乘的结果（用十六进制表示）。
 \begin{center}
     \begin{tabular}{|c|c|c|c|c|}
         \hline
-        地址 & \verb|0x0100| & \verb|0x0101| & \verb|0x0111| & \verb|0x1000| \\
+        地址 & \verb|0100| & \verb|0101| & \verb|0111| & \verb|1000| \\
         \hline
         内容（十六进制） & \verb|12| & \verb|34| & \verb|56| & \verb|78| \\
         \hline
@@ -92,7 +92,7 @@
     \vspace{0.5em}
     \begin{tabular}{|c|c|c|c|c|}
         \hline
-        地址 & \verb|0x1001| & \verb|0x1010| & \verb|0x1011| & \verb|0x1100| \\
+        地址 & \verb|1001| & \verb|1010| & \verb|1011| & \verb|1100| \\
         \hline
         内容（十六进制） & \verb|1A| & \verb|3B| & \verb|5E| & \verb|7F| \\
         \hline
@@ -100,7 +100,7 @@
 \end{center}
 \end{problem}
 \begin{note}
-怀疑是题目错误？因为这8个地址在内存中不是连续的，此处当作连续的 \texttt{0x0100} 到 \texttt{0x0107}。
+题目应该还是有问题，因为从 \verb|0101| 到 \verb|0111| 还是不连续的。后面我们将其视为连续的内存。
 \end{note}
 \begin{solution}
 位于 \verb|0x0100| 的4个字节为 \verb|12 34 56 78|，位于 \verb|0x0104| 的4个字节为 \verb|1A 3B 5E 7F|。

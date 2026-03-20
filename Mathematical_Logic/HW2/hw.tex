@@ -67,9 +67,11 @@
         \item[(1)] $\lnot\lnot p$ \hfill (前提)
         \item[(2)] $\lnot\lnot p \to (\lnot\lnot\lnot\lnot p \to \lnot\lnot p)$ \hfill (L1)
         \item[(3)] $\lnot\lnot\lnot\lnot p \to \lnot\lnot p$ \hfill ((1), (2), MP)
-        \item[(4)] $\lnot p \to \lnot\lnot\lnot p$ \hfill (L3)
-        \item[(5)] $\lnot\lnot p \to p$ \hfill $\star$(L3)
-        \item[(6)] $p$ \hfill ((1), (5), MP)
+        \item[(4)] $(\lnot\lnot\lnot\lnot p \to \lnot\lnot p) \to (\lnot p \to \lnot\lnot\lnot p)$ \hfill (L3)
+        \item[(5)] $\lnot p \to \lnot\lnot\lnot p$ \hfill ((3), (4), MP)
+        \item[(6)] $(\lnot p \to \lnot\lnot\lnot p) \to (\lnot\lnot p \to p)$ \hfill (L3)
+        \item[(7)] $\lnot\lnot p \to p$ \hfill $\star$((5), (6), MP)
+        \item[(8)] $p$ \hfill ((1), (7), MP)
     \end{enumerate}
 \end{solution}
 
@@ -87,7 +89,7 @@
     首先，我们证明引理 $p \to \lnot\lnot p$：
     \begin{enumerate}
         \item[(1)] $(\lnot\lnot\lnot p \to \lnot p) \to (p \to \lnot\lnot p)$ \hfill (L3)
-        \item[(2)] $\lnot\lnot\lnot p \to \lnot p$ \hfill (由于前面已证 $\{ \lnot\lnot p\} \vdash p$，故 $\vdash \lnot\lnot p \to p$，在此取 $p = \lnot p$)
+        \item[(2)] $\lnot\lnot\lnot p \to \lnot p$ \hfill (由于前面已证 $\{ \lnot\lnot p\} \vdash p$，故 $\vdash \lnot\lnot p \to p$，在此取 $p := \lnot p$)
         \item[(3)] $p \to \lnot\lnot p$ \hfill ((1), (2), MP)
     \end{enumerate}
     接下来，利用这个引理证明原命题：

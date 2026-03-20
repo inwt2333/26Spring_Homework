@@ -30,9 +30,9 @@
     我们考虑$v_0, v_1, v_2$，已知$v_0v_1\in E(G), v_1v_2 \in E(G)$.
     \begin{itemize}
         \item 若$v_0v_2 \notin E(G)$，则$v_0, v_1, v_2$这三个点满足命题。
-        \item 若$v_0v_2 \in E(G)$，则我们可以将路径缩短为$P' : v_0, v_2,\cdots, v_k$，继续对$v_0, v_2, v_3$进行讨论。
+        \item 若$v_0v_2 \in E(G)$，则可以将路径缩短为$P' : v_0, v_2,\cdots, v_k$，继续对$v_0, v_2, v_3$进行讨论。
     \end{itemize}
-    如此递归下去，如果对每一个$v_0, v_i (i \le k-1)$ 都有 $v_0v_i \in E(G)$，我们可以不断缩短路径，直到路径上只剩下$v_0, v_{k-1}, v_k$三个点。已知$v_0v_k \notin E(G)$，则$v_0, v_{k-1}, v_k$满足题设条件。否则若存在$v_i$使得对于所有$0<j<i$都有$v_0v_j \in E(G)$，但$v_0v_i \notin E(G)$，则$v_0, v_{i-1}, v_i$满足题设条件。命题得证。
+    如此递归下去，如果对每一个$v_0, v_i (i \le k-1)$ 都有 $v_0v_i \in E(G)$，则可以不断缩短路径，直到路径上只剩下$v_0, v_{k-1}, v_k$三个点。已知$v_0v_k \notin E(G)$，则$v_0, v_{k-1}, v_k$满足题设条件。否则若存在$v_i$使得对于所有$0<j<i$都有$v_0v_j \in E(G)$，但$v_0v_i \notin E(G)$，则$v_0, v_{i-1}, v_i$满足题设条件。命题得证。
 \end{solution}
 
 \begin{problem}
