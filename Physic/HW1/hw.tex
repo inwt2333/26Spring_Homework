@@ -1,0 +1,125 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, color, framed, graphicx, hyperref, mathrsfs}
+
+\title{\textbf{3月23日作业}}
+\author{韩岳成 524531910029}
+\date{\today}
+\linespread{1.5}
+\definecolor{shadecolor}{RGB}{241, 241, 255}
+\newcounter{problemname}
+\newenvironment{problem}{\begin{shaded}\stepcounter{problemname}\par\noindent\textbf{题目\arabic{problemname}. }}{\end{shaded}\par}
+\newenvironment{solution}{\par\noindent\textbf{解答. }}{\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\par}
+\everymath{\displaystyle}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+    宇宙大爆炸遗留在宇宙空间的均匀背景辐射相当于温度约为3K的黑体辐射，试计算：
+    \begin{enumerate}
+        \item[(1)] 此辐射的单色辐出度的峰值波长；
+        \item[(2)] 地球表面接收到此辐射的功率。
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    (1)
+    单色辐出度的峰值波长$\lambda_m$满足维恩位移定律：
+\[\lambda_m T = b\]
+其中$T$是黑体的温度，$b$是维恩位移常数，约为$2.897 \times 10^{-3} \text{ m·K}$。代入$T = 3 \text{ K}$，我们得到：
+\[\lambda_m = \frac{b}{T} = \frac{2.897 \times 10^{-3} \text{ m·K}}{3 \text{ K}} \approx 9.66 \times 10^{-4} \text{ m} = 966 \text{ nm}\]
+
+(2)
+地球表面接收到的功率可以通过斯特藩-玻尔兹曼定律计算。首先，我们需要计算宇宙背景辐射的总辐出度$M_0(T)$，它由以下公式给出：
+\[M_0(T) = \sigma T^4\]
+其中$\sigma$是斯特藩-玻尔兹曼常数，约为$5.67 \times 10^{-8} \text{ W·m}^{-2}\text{·K}^{-4}$。代入$T = 3 \text{ K}$，我们得到：
+\[M_0(3) = 5.67 \times 10^{-8} \text{ W·m}^{-2}\text{·K}^{-4} \times (3 \text{ K})^4 \approx 4.59 \times 10^{-6} \text{ W·m}^{-2}\]
+取地球半径为$R = 6.371 \times 10^6 \text{ m}$，我们可以计算地球表面接收到的总功率$P$：
+\[P = M_0(3) \times \pi R^2 \approx 5.81 \times 10^8 \text{ W}\]
+\end{solution}
+
+\begin{problem}
+在康普顿散射中，入射X射线的波长为0.003 nm, 反冲电子的速率为0.6c，求散射光子的波长和散射方向。
+\end{problem}
+
+\begin{solution}
+当$v=0.6c$时，电子的动能为：
+\[E_k = (\gamma - 1)m_e c^2\]
+其中$\gamma = \frac{1}{\sqrt{1 - (v/c)^2}} = 1.25$，$m_ec^2$是静止电子能量，约为$0.511 \text{ MeV}$。代入数值，我们得到：
+\[E_k = (1.25 - 1) \times 0.511 \text{ MeV} = 0.12775 \text{ MeV}\]
+入射光子能量
+\[E = \frac{hc}{\lambda} = \frac{1240 \text{ eV·nm}}{0.003 \text{ nm}} \approx 0.4133 \text{ MeV}\]
+散射后光子能量
+\[E' = E - E_k = 0.4133 \text{ MeV} - 0.12775 \text{ MeV} = 0.28555 \text{ MeV}\]
+散射光子的波长$\lambda'$可以通过能量关系计算：
+\[\lambda' = \frac{hc}{E'} = \frac{1.24 \times 10^{-6} \text{ MeV·nm}}{0.28555 \text{ MeV}} \approx 0.00434 \text{ nm}\]
+散射方向可以通过康普顿散射公式计算：
+\[\Delta \lambda = \lambda' - \lambda = \frac{h}{m_e c}(1 - \cos \theta)\]
+代入数值，我们得到：
+\[\cos\theta = 1 - \frac{(\lambda' - \lambda) m_e c}{h} = 0.449\]
+此时$\theta \approx 63.3^\circ$。
+\end{solution}
+
+\begin{problem}
+对于氢原子、$\text{He}^+$、$\text{Li}^{2+}$，分别计算：
+\begin{enumerate}
+    \item[(1)] 它们的第一、第二玻尔轨道半径及电子在这些轨道上的速度；
+    \item[(2)] 电子的基态能量；
+    \item[(3)] 由第一激发态到基态发射光子的波长。
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+
+(1)
+第n级玻尔轨道半径及电子在这些轨道上的速度为：
+\[r_n = a_0 \frac{n^2}{Z}, \quad v_n = v_0 \frac{Z}{n}\]
+\begin{itemize}
+    \item H ($Z=1$): $r_1=a_0, r_2=4a_0$; $v_1=v_0, v_2=0.5v_0$
+    \item He$^+$ ($Z=2$): $r_1=0.5a_0, r_2=2a_0$; $v_1=2v_0, v_2=v_0$
+    \item Li$^{2+}$ ($Z=3$): $r_1=0.33a_0, r_2=1.33a_0$; $v_1=3v_0, v_2=1.5v_0$
+\end{itemize}
+
+(2)
+基态能量的公式为：
+$E_1 = -13.6 Z^2 \text{ eV}$
+\begin{itemize}
+    \item H: $E_1 = -13.6 \times 1^2 = -13.6 \text{ eV}$
+    \item He$^+$: $E_1 = -13.6 \times 2^2 = -54.4 \text{ eV}$
+    \item Li$^{2+}$: $E_1 = -13.6 \times 3^2 = -122.4 \text{ eV}$
+\end{itemize}
+
+
+由第一激发态到基态发射光子的波长公式为：
+\[\Delta E = 10.2 Z^2 \text{ eV}, \quad \lambda = \frac{1240}{\Delta E} \text{ nm}\]
+\begin{itemize}
+    \item H: $\lambda = 1240 / 10.2 \approx 121.6 \text{ nm}$
+    \item He$^+$: $\lambda = 1240 / 40.8 \approx 30.4 \text{ nm}$
+    \item Li$^{2+}$: $\lambda = 1240 / 91.8 \approx 13.5 \text{ nm}$
+\end{itemize}
+
+\end{solution}
+
+\begin{problem}
+运动的质子与一个处于静止的基态氢原子作完全非弹性的对心碰撞，欲使原子发射出光子，则质子至少应以多大的速度运动。
+\end{problem}
+
+\begin{solution}
+
+由动量守恒得碰撞后共同速度 $V = \frac{m}{m+M}v_0$。
+
+由能量守恒得最小激发动能：
+\[ \frac{1}{2}mv_0^2 = \frac{1}{2}(m+M)V^2 + \Delta E \]
+
+
+代入 $V$ 得：
+\[ \frac{1}{2}mv_0^2 \left( \frac{M}{m+M} \right) = \Delta E \]
+\[ v_0 = \sqrt{\frac{2 \Delta E (m+M)}{mM}} \approx \sqrt{\frac{2 \Delta E}{m}} \quad (\text{由于 } M \gg m) \]
+
+
+取 $\Delta E = 10.2 \text{ eV} = 1.63 \times 10^{-18} \text{ J}$，$m = 1.67 \times 10^{-27} \text{ kg}$：
+\[ v_0 = \sqrt{\frac{2 \times 1.63 \times 10^{-18}}{1.67 \times 10^{-27}}} \approx 4.42 \times 10^4 \text{ m/s} \]
+\end{solution}
+\end{document}
