@@ -37,7 +37,7 @@
 其中$\sigma$是斯特藩-玻尔兹曼常数，约为$5.67 \times 10^{-8} \text{ W·m}^{-2}\text{·K}^{-4}$。代入$T = 3 \text{ K}$，我们得到：
 \[M_0(3) = 5.67 \times 10^{-8} \text{ W·m}^{-2}\text{·K}^{-4} \times (3 \text{ K})^4 \approx 4.59 \times 10^{-6} \text{ W·m}^{-2}\]
 取地球半径为$R = 6.371 \times 10^6 \text{ m}$，我们可以计算地球表面接收到的总功率$P$：
-\[P = M_0(3) \times \pi R^2 \approx 5.81 \times 10^8 \text{ W}\]
+\[P = M_0(3) \times 4\pi R^2 \approx 2.32 \times 10^9 \text{ W}\]
 \end{solution}
 
 \begin{problem}
@@ -76,10 +76,11 @@
 (1)
 第n级玻尔轨道半径及电子在这些轨道上的速度为：
 \[r_n = a_0 \frac{n^2}{Z}, \quad v_n = v_0 \frac{Z}{n}\]
+其中$a_0 = 0.0529 \text{ nm}$，$v_0 = 2.19 \times 10^6 \text{ m/s}$是基态电子速度，$Z$是核电荷数。代入数值，我们得到：
 \begin{itemize}
-    \item H ($Z=1$): $r_1=a_0, r_2=4a_0$; $v_1=v_0, v_2=0.5v_0$
-    \item He$^+$ ($Z=2$): $r_1=0.5a_0, r_2=2a_0$; $v_1=2v_0, v_2=v_0$
-    \item Li$^{2+}$ ($Z=3$): $r_1=0.33a_0, r_2=1.33a_0$; $v_1=3v_0, v_2=1.5v_0$
+    \item H ($Z=1$): $r_1=0.0529 \text{ nm}, r_2=0.2116 \text{ nm}$; $v_1=2.19 \times 10^6 \text{ m/s}, v_2=1.095 \times 10^6 \text{ m/s}$
+    \item He$^+$ ($Z=2$): $r_1=0.0265 \text{ nm}, r_2=0.1058 \text{ nm}$; $v_1=4.38 \times 10^6 \text{ m/s}, v_2=2.19 \times 10^6 \text{ m/s}$
+    \item Li$^{2+}$ ($Z=3$): $r_1=0.0176 \text{ nm}, r_2=0.0705 \text{ nm}$; $v_1=6.57 \times 10^6 \text{ m/s}, v_2=3.285 \times 10^6 \text{ m/s}$
 \end{itemize}
 
 (2)
@@ -108,18 +109,18 @@ $E_1 = -13.6 Z^2 \text{ eV}$
 
 \begin{solution}
 
-由动量守恒得碰撞后共同速度 $V = \frac{m}{m+M}v_0$。
+由动量守恒得碰撞后共同速度 $V = \frac{m}{m+m}v_0=\frac{1}{2}v_0$。
 
 由能量守恒得最小激发动能：
-\[ \frac{1}{2}mv_0^2 = \frac{1}{2}(m+M)V^2 + \Delta E \]
+\[ \frac{1}{2}mv_0^2 = \frac{1}{2}(m+m)V^2 + \Delta E \]
 
 
 代入 $V$ 得：
-\[ \frac{1}{2}mv_0^2 \left( \frac{M}{m+M} \right) = \Delta E \]
-\[ v_0 = \sqrt{\frac{2 \Delta E (m+M)}{mM}} \approx \sqrt{\frac{2 \Delta E}{m}} \quad (\text{由于 } M \gg m) \]
+\[ \frac{1}{2}mv_0^2 \left( \frac{m}{m+m} \right) = \Delta E \]
+\[ v_0 = \sqrt{\frac{2 \Delta E (m+m)}{m \cdot m}} \approx \sqrt{\frac{4 \Delta E}{m}} \]
 
 
 取 $\Delta E = 10.2 \text{ eV} = 1.63 \times 10^{-18} \text{ J}$，$m = 1.67 \times 10^{-27} \text{ kg}$：
-\[ v_0 = \sqrt{\frac{2 \times 1.63 \times 10^{-18}}{1.67 \times 10^{-27}}} \approx 4.42 \times 10^4 \text{ m/s} \]
+\[ v_0 = \sqrt{\frac{4 \times 1.63 \times 10^{-18}}{1.67 \times 10^{-27}}} \approx 6.25 \times 10^4 \text{ m/s} \]
 \end{solution}
 \end{document}

@@ -1,0 +1,80 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, color, framed, graphicx, hyperref, mathrsfs}
+
+\title{\textbf{3月23日作业}}
+\author{韩岳成 524531910029}
+\date{\today}
+\linespread{1.5}
+\definecolor{shadecolor}{RGB}{241, 241, 255}
+\newcounter{problemname}
+\newenvironment{problem}{\begin{shaded}\stepcounter{problemname}\par\noindent\textbf{题目\arabic{problemname}. }}{\end{shaded}\par}
+\newenvironment{solution}{\par\noindent\textbf{解答. }}{\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\par}
+\everymath{\displaystyle}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+    证明：若 $G$ 是简单图且 $\Delta(G) \leqslant 3$，则 $\kappa(G) = \kappa'(G)$。
+\end{problem}
+
+\begin{solution}
+    对于任意图 $G$，我们已知
+\begin{equation}
+    \kappa(G) \leqslant \kappa'(G) \leqslant \delta(G) \leqslant \Delta(G) \leqslant 3
+\end{equation}
+为了证明 $\kappa(G) = \kappa'(G)$，由于已有 $\kappa(G) \leqslant \kappa'(G)$，我们只需利用反证法证明 $\kappa(G) < \kappa'(G)$ 是不可能的。
+
+假设 $\kappa(G) < \kappa'(G)$。令 $k = \kappa(G)$。由 (1) 式知，$\kappa'(G) \leqslant 3$，因此 $k$ 的可能取值为 $0, 1, 2$。我们对 $k$ 进行分类讨论：
+
+\begin{enumerate}
+    \item \textbf{当 $k = 0$ 时：}\\
+    此时图 $G$ 不连通，必然有边连通度 $\kappa'(G) = 0$。这与假设 $0 < \kappa'(G)$ 矛盾。
+
+    \item \textbf{当 $k = 1$ 时：}\\
+    此时存在一个割点 $v$。删除 $v$ 后，图 $G$ 至少分裂为两个连通分支。因为 $\Delta(G) \leqslant 3$，点 $v$ 的度数 $d(v) \leqslant 3$。这不超过 3 条边需要连接到至少 2 个独立的连通分支上。由鸽巢原理，必然存在至少一个连通分支，它与 $v$ 之间恰好只有一条边相连。显然，这条边是一条割边（桥）。因此，只要切断这条边即可破坏图的连通性，即 $\kappa'(G) = 1$。这与假设 $1 < \kappa'(G)$ 矛盾。
+
+    \item \textbf{当 $k = 2$ 时：}\\
+    此时存在一个大小为 2 的点割集 $S = \{u, v\}$。删除 $S$ 后，图分裂为 $c$ 个连通分支 ($c \geqslant 2$)，记为 $C_1, C_2, \dots, C_c$。\\
+    为了保证 $\kappa(G)=2$（即删除单个顶点不能破坏连通性），每一个连通分支与集合 $S$ 之间至少要有 2 条边相连。因此，连接 $S$ 与各个分支的总边数至少为 $2c$。\\
+    又因为 $\Delta(G) \leqslant 3$，集合 $S$ 中顶点的总度数 $d(u) + d(v) \leqslant 6$。因此有 $2c \leqslant 6$，即 $c \leqslant 3$。
+    \begin{itemize}
+        \item 如果存在某个连通分支与 $S$ 之间恰好只有 2 条边相连，我们直接切断这两条边，即可将该连通分支孤立，从而得出 $\kappa'(G) \leqslant 2$。这与假设 $2 < \kappa'(G)$ 矛盾。
+        \item 如果上述情况不成立，这意味着每个连通分支与 $S$ 之间至少有 3 条边。由于总边数最多为 6，必然是恰好有 2 个连通分支 $C_1, C_2$，且它们与 $S$ 之间各有恰好 3 条边。此时 $u, v$ 之间无边，且 $d(u)=3, d(v)=3$。\\
+        考虑顶点 $u$ 发出的 3 条边。由于要分配给 2 个连通分支，由鸽巢原理，$u$ 必然向其中一个分支发出 2 条边，向另一个分支发出 1 条边。不妨设 $u$ 与 $C_1$ 有 2 条边，与 $C_2$ 有 1 条边（记此边为 $e_1$）。\\
+        同理，为了使 $C_1$ 和 $C_2$ 各自获得总计 3 条边，顶点 $v$ 必然与 $C_1$ 有 1 条边（记此边为 $e_2$），与 $C_2$ 有 2 条边。\\
+        此时，我们观察边集 $E' = \{e_1, e_2\}$。若在原图 $G$ 中切断 $e_1$ 和 $e_2$，图将被分为完全不连通的两部分：一部分包含 $V(C_1) \cup \{u\}$，另一部分包含 $V(C_2) \cup \{v\}$。这说明存在大小为 2 的边割集，即 $\kappa'(G) \leqslant 2$。这再次与假设 $2 < \kappa'(G)$ 矛盾。
+    \end{itemize}
+\end{enumerate}
+
+综上所述，所有导致 $\kappa(G) < \kappa'(G)$ 的假设均推导出矛盾。因此必然有 $\kappa(G) = \kappa'(G)$。
+\end{solution}
+
+\begin{problem}
+    设 $G$ 是一个 $k$-连通图且 $v$ 是 $G$ 的一个顶点。对任意正整数 $m$，定义 $G_m$ 是由 $G$ 添加 $m$ 个新顶点 $w_1, w_2, \dots, w_m$ 和所有形如 $w_iu$ ($1 \leqslant i \leqslant m, u \in N_G(v)$) 的边后所得之图。证明 $G_m$ 是 $k$-连通的。
+\end{problem}
+
+\begin{solution}
+根据 $k$-连通图的定义，要证明 $G_m$ 是 $k$-连通的，等价于证明对于 $G_m$ 的任意一个大小为 $k-1$ 的顶点子集 $S$，删除 $S$ 后的图 $G_m - S$ 依然是连通的。
+
+任取 $S \subset V(G_m)$，且 $|S| = k-1$。我们将 $S$ 划分为两部分：
+\begin{align*}
+    S_G &= S \cap V(G) \quad (\text{位于原图 } G \text{ 中的点}) \\
+    S_W &= S \cap \{w_1, w_2, \dots, w_m\} \quad (\text{位于新增顶点中的点})
+\end{align*}
+显然，原图顶点被删除的数量 $|S_G| \leqslant |S| = k-1$。
+
+首先考虑剩余的原图部分，记为子图 $H = G - S_G$。因为原图 $G$ 是 $k$-连通的，而我们从中删除的顶点集 $S_G$ 的大小严格小于 $k$，所以子图 $H$ 必然是连通的。
+
+接下来，我们需要证明在图 $G_m - S$ 中，所有未被删除的新增顶点 $w_i \notin S_W$ 都与连通的子图 $H$ 相连。
+
+考虑任意一个未被删除的新顶点 $w_i$。根据图 $G_m$ 的构造定义，它在原图中的邻域为 $N_G(v)$。
+因为 $G$ 是 $k$-连通的，原图中顶点 $v$ 的度数至少为 $k$，而在割集 $S_G$ 中，我们最多只删除了 $k-1$ 个原图顶点。因此在集合 $N_G(v)$ 中，至少存在一个顶点 $u^*$ 没有被删除，即 $u^* \in V(H)$。
+
+由于在图 $G_m$ 中 $w_i$ 与 $N_G(v)$ 中的所有顶点都有边相连，所以未被删除的顶点 $w_i$ 必然与未被删除的顶点 $u^*$ 之间有边相连，因此 $w_i$ 与连通分支 $H$ 相连。
+
+因此，整个图 $G_m - S$ 是连通的。由 $S$ 的任意性可知，图 $G_m$ 至少需要删除 $k$ 个顶点才能被破坏连通性，故 $G_m$ 是 $k$-连通的。
+\end{solution}
+\end{document}
