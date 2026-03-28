@@ -1,0 +1,100 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, color, framed, graphicx, hyperref, mathrsfs}
+
+\title{\textbf{3月27日作业}}
+\author{韩岳成 524531910029}
+\date{\today}
+\linespread{1.5}
+\definecolor{shadecolor}{RGB}{241, 241, 255}
+\newcounter{problemname}
+\newenvironment{problem}{\begin{shaded}\stepcounter{problemname}\par\noindent\textbf{题目\arabic{problemname}. }}{\end{shaded}\par}
+\newenvironment{solution}{\par\noindent\textbf{解答. }}{\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\par}
+\everymath{\displaystyle}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+    证明：
+    \[ \vdash \lnot(p \to q) \to \lnot q \]
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item [(1)] $q \to (p \to q)$ \hfill (L1)
+        \item [(2)] $\lnot\lnot q \to q$\hfill (双重否定律)
+        \item [(3)] $\lnot\lnot q \to (p \to q)$\hfill (1, 2, HS)
+        \item [(4)] $(p \to q) \to \lnot\lnot(p \to q) $\hfill (第二双重否定律)
+        \item [(5)] $\lnot\lnot q \to \lnot\lnot(p \to q)$\hfill (3, 4, HS)
+        \item [(6)] $(\lnot\lnot q \to \lnot\lnot(p \to q)) \to (\lnot(p \to q) \to \lnot q)$ \hfill (L3)
+        \item [(7)] $\lnot(p \to q) \to \lnot q$\hfill (5, 6, MP)
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+    证明：
+    \[ \vdash \lnot(p \to q) \to p \]
+\end{problem}
+
+\begin{solution}
+    \begin{enumerate}
+        \item [(1)] $\lnot p \to (p \to q)$ \hfill (否定前件律)
+        \item [(2)] $(p \to q) \to \lnot\lnot(p \to q)$ \hfill (第二双重否定律)
+        \item [(3)] $\lnot p \to \lnot\lnot(p \to q)$ \hfill (1, 2, HS)
+        \item [(4)] $(\lnot p \to \lnot\lnot(p \to q)) \to (\lnot(p \to q) \to p)$ \hfill (L3)
+        \item [(5)] $\lnot(p \to q) \to p$\hfill (3, 4, MP)
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+不用(L3)，试由归谬律和双重否定律（即定理1推论$\vdash \lnot\lnot p \to p$）推出反证律。
+\end{problem}
+
+\begin{solution}
+    设 $\Gamma \cup \{\lnot p\} \vdash q$ 且 $\Gamma \cup \{\lnot p\} \vdash \lnot q$。
+    
+    \begin{enumerate}
+        \item [(1)] $\Gamma \cup \{\lnot p\} \vdash q$ \hfill (已知)
+        \item [(2)] $\Gamma \cup \{\lnot p\} \vdash \lnot q$ \hfill (已知)
+        \item [(3)] $\Gamma \vdash \lnot\lnot p$ \hfill (1, 2, 归谬律)
+        \item [(4)] $\Gamma \vdash \lnot\lnot p \to p$ \hfill (双重否定律)
+        \item [(5)] $\Gamma \vdash p$ \hfill (3, 4, MP)
+    \end{enumerate}    
+    以上证明即说明由 $\Gamma \cup \{\lnot p\}\vdash q$ 和 $\Gamma \cup \{\lnot p\}\vdash \lnot q$ 能够共同推出 $\Gamma \vdash p$，反证律得证。
+\end{solution}
+
+\begin{problem}
+证明：
+\[ \vdash \lnot(p \land q) \longleftrightarrow (\lnot p \lor \lnot q) \]
+\end{problem}
+
+\begin{solution}
+    $\to$ 证明 $\{\lnot(p\land q)\} \vdash (\lnot p \lor \lnot q)$：
+    \begin{enumerate}
+        \item [(1)] $\lnot(p\land q)$\hfill (假设)
+        \item [(2)] $\lnot(p \land q) \to \lnot\lnot(p \to \lnot q)$\hfill (定义)
+        \item [(3)] $\lnot\lnot(p \to \lnot q)$\hfill (1, 2, MP)
+        \item [(4)] $\lnot\lnot(p \to \lnot q) \to (p \to \lnot q)$\hfill (双重否定律)
+        \item [(5)] $p \to \lnot q$\hfill (3, 4, MP)
+        \item [(6)] $\lnot\lnot p \to p$\hfill (双重否定律)
+        \item [(7)] $\lnot\lnot p \to \lnot q$\hfill (5, 6, HS)
+        \item [(8)] $(\lnot\lnot p \to \lnot q) \to (\lnot p \lor \lnot q)$ \hfill (定义)
+        \item [(9)] $\lnot p \lor \lnot q$\hfill (7, 8, MP)
+    \end{enumerate}
+
+    $\leftarrow$ 证明 $\{\lnot p \lor \lnot q\} \vdash \lnot(p \land q)$：
+    \begin{enumerate}
+        \item [(1)] $\lnot p \lor \lnot q$\hfill (假设)
+        \item [(2)] $(\lnot p \lor \lnot q) \to (\lnot\lnot p \to \lnot q)$\hfill (定义)
+        \item [(3)] $\lnot\lnot p \to \lnot q$\hfill (1, 2, MP)
+        \item [(4)] $p \to \lnot\lnot p$\hfill (第二双重否定律)
+        \item [(5)] $p \to \lnot q$\hfill (3, 4, HS)
+        \item [(6)] $(p \to \lnot q) \to \lnot\lnot (p \to \lnot q)$\hfill (第二双重否定律)
+        \item [(7)] $\lnot\lnot(p \to \lnot q)$\hfill (5, 6, HS)
+        \item [(8)] $\lnot\lnot(p \to \lnot q) \to \lnot(p \land q)$\hfill (定义)
+        \item [(9)] $\lnot(p \land q)$\hfill (7, 8, HS)
+    \end{enumerate}
+\end{solution}
+\end{document}
