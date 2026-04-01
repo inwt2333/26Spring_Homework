@@ -1,0 +1,110 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, color, framed, graphicx, hyperref, mathrsfs}
+\usepackage[margin=3 cm]{geometry}
+
+\title{\textbf{4月1日作业}}
+\author{韩岳成 524531910029}
+\date{\today}
+\linespread{1.5}
+\definecolor{shadecolor}{RGB}{241, 241, 255}
+\newcounter{problemname}
+\newenvironment{problem}{\begin{shaded}\stepcounter{problemname}\par\noindent\textbf{题目\arabic{problemname}. }}{\end{shaded}\par}
+\newenvironment{solution}{\par\noindent\textbf{解答. }}{\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\par}
+\everymath{\displaystyle}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+    下面的公式哪些恒为永真式？
+    \begin{enumerate}
+        \item $(q \lor r) \to (\lnot r \to q)$
+        \item $(p \land \lnot q)\lor ((q \land \lnot r) \land (r \land\lnot p))$
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    1. 公式 $(q \lor r) \to (\lnot r \to q)$ 的真值表：
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|}
+            \hline
+            $q$ & $r$ & $q \lor r$ & $\lnot r$ & $\lnot r \to q$ & $(q \lor r) \to (\lnot r \to q)$ \\
+            \hline
+            1 & 1 & 1 & 0& 1& 1\\
+            \hline
+            1 & 0 & 1 &1 & 1& 1\\
+            \hline
+            0 & 1 & 1 & 0& 1& 1\\
+            \hline
+            0 & 0 & 0 &1 & 0& 1\\
+            \hline
+        \end{tabular}
+    \end{center}
+    因此为永真式。
+
+    2. 公式 $(p \land \lnot q)\lor ((q \land \lnot r) \land (r \land\lnot p))$ 的真值表：
+    \begin{center}
+        % 为了防止表格过宽，可以将部分中间步骤合并或省略，这里为你列出了所有的基本推导列
+        \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+            \hline
+            $p$ & $q$ & $r$ & $\lnot p$ & $\lnot q$ & $\lnot r$ & $p \land \lnot q$ & $q \land \lnot r$ & $r \land \lnot p$ & $(q \land \lnot r) \land (r \land\lnot p)$ & 原公式 \\
+            \hline
+            1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+            \hline
+            1 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0\\
+            \hline
+            1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1\\
+            \hline
+            1 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 1\\
+            \hline
+            0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\
+            \hline
+            0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0\\
+            \hline
+            0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 0\\
+            \hline
+            0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0\\
+            \hline
+        \end{tabular}
+    \end{center}
+    因此不为永真式。
+\end{solution}
+
+\begin{note}
+\begin{center}
+    \includegraphics[width=0.6\textwidth]{image.png}\\
+\end{center}
+    我个人认为这样写真值表更清晰一些，更不容易做错，并且表格的框架我是交由AI生成的(x)，因此仍然采用了这种格式。
+\end{note}
+
+\begin{problem}
+以下结论是否正确？为什么？
+    \begin{enumerate}
+        \item $\models p(x_1, x_2, \cdots, x_n) \quad \Leftrightarrow \quad \models p(\lnot x_1, \cdots, \lnot x_n)$
+        \item $\models (p \to q) \leftrightarrow (p' \to q') \quad \Rightarrow \quad \models p \leftrightarrow p' \text{且} \models q \leftrightarrow q'$
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    1. 正确。
+    
+    \textbf{证明：}
+    
+    （$\Rightarrow$）：如果 $\models p(x_1, x_2, \cdots, x_n)$，即 $p$ 是永真式，这意味着对于命题变元 $x_1, x_2, \cdots, x_n$ 的任何一组真值赋值，公式 $p$ 的真值都为真。那么由代换定理，如果将每个 $x_i$ 代换为 $\lnot x_i$，其结果依然必定为真。因此 $\models p(\lnot x_1, \cdots, \lnot x_n)$ 成立。
+    
+    （$\Leftarrow$）：如果 $\models p(\lnot x_1, \cdots, \lnot x_n)$，根据刚才同样的代入规则，在此永真式中将每个 $x_i$ 替换为 $\lnot x_i$。由于 $\lnot(\lnot x_i) \equiv x_i$，代入后得到的公式等价为 $p(x_1, x_2, \cdots, x_n)$，它也必定是永真式。故等价关系成立。
+
+    2. 不正确。
+    
+    \textbf{反例：}
+    
+    令 $p' = \lnot q$，$q' = \lnot p$。
+    
+    根据逆否律，我们知道 $p \to q$ 与 $\lnot q \to \lnot p$ 是逻辑等价的，即 $\models (p \to q) \leftrightarrow (\lnot q \to \lnot p)$ 成立。
+    
+    但是，结论部分要求 $\models p \leftrightarrow p'$（即 $\models p \leftrightarrow \lnot q$）且 $\models q \leftrightarrow q'$（即 $\models q \leftrightarrow \lnot p$）。
+    显然 $p \leftrightarrow \lnot q$ 并不是永真式，$q \leftrightarrow \lnot p$ 也不是永真式。因此结论不成立。
+\end{solution}
+\end{document}
