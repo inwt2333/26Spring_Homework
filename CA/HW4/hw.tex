@@ -1,6 +1,7 @@
 \documentclass[12pt, a4paper, oneside]{ctexart}
 \usepackage{amsmath, amsthm, amssymb, bm, color, framed, graphicx, hyperref, mathrsfs}
 
+
 \title{\textbf{4月7日作业}}
 \author{韩岳成 524531910029}
 \date{\today}
@@ -191,8 +192,14 @@
 \end{center}
 \end{problem}
 
+\begin{solution}
+\textcircled{1} = 1, \textcircled{2} = 0, \textcircled{3} = 1, \textcircled{4} = 0, \textcircled{5} = 0, \textcircled{6} = 1。
+
+当输入S和R同时为0时，该SR锁存器的输入是非法的。
+\end{solution}
+
 \begin{problem}
-【问答题】已知全加器由两个半加器构成，请通过编号说明下述全加器中每个半加器是如何组成的，并写出⑥和⑦分别对应什么输出。
+【问答题】已知全加器由两个半加器构成，请通过编号说明下述全加器中每个半加器是如何组成的，并写出\textcircled{6}和\textcircled{7}分别对应什么输出。
 
 % 在此处插入第二张图片
 \begin{center}
@@ -201,12 +208,78 @@
 \end{center}
 \end{problem}
 
+\begin{solution}
+\textcircled{1}和\textcircled{3}组成一个半加器，其中\textcircled{1}输出的是A和B的和，\textcircled{3}输出的是A和B的进位。
+
+\textcircled{2}和\textcircled{4}组成另一个半加器，其中\textcircled{4}输出的是\textcircled{1}的输出和$\text{C}_\text{in}$的和，\textcircled{2}输出的是\textcircled{1}的输出和$\text{C}_\text{in}$的进位。
+
+\textcircled{5}将上面两步的进位汇总，因此\textcircled{6}输出的是全加器的进位，而\textcircled{7}输出的是全加器的和输出。
+\end{solution}
+
 \begin{problem}
 【问答题】以4-bit乘法器为例，假设被乘数为0010，乘数为0011，请分别写出第一版乘法器（课件第6页）和经过流程优化、面积优化后的乘法器（课件第33页）在每一轮结束后，乘积寄存器、被乘数寄存器、乘数寄存器（如有）的内容（以二进制表示）。
 \end{problem}
+
+\begin{solution}
+第一版乘法器：
+\begin{center}
+\begin{tabular}{c|c|c|c}
+轮数 & 乘积寄存器 & 被乘数寄存器 & 乘数寄存器 \\
+\hline
+初始 & 00000000 & 00000010 & 0011\\
+1 & 00000010 & 00000100 & 0001\\
+2 & 00000110 & 00001000 & 0000\\
+3 & 00000110 & 00010000 & 0000\\
+4 & 00000110 & 00100000 & 0000\\
+\end{tabular}
+\end{center}
+
+优化后乘法器：
+\begin{center}
+\begin{tabular}{c|c|c}
+轮数 & 乘积寄存器 & 被乘数寄存器 \\
+\hline
+初始 & 00000011 & 0010 \\
+1 & 00010001 & 0010 \\
+2 & 00011000 & 0010 \\
+3 & 00001100 & 0010 \\
+4 & 00000110 & 0010 \\
+\end{tabular}
+\end{center}
+
+\end{solution}
 
 \begin{problem}
 【问答题】以4-bit除法器为例，假设被除数为0111，除数为0010，请写出第一版除法器（课件第38页）在每一轮结束后，除数寄存器、商寄存器、余数寄存器的内容（以二进制表示）。
 \end{problem}
 
+\begin{solution}
+第一版除法器：
+\begin{center}
+\begin{tabular}{c|c|c|c}
+轮数 & 除数寄存器 & 商寄存器 & 余数寄存器 \\
+\hline
+初始 & 00100000 & 0000 & 00000111 \\
+1 & 00010000 & 0000 & 00000111 \\
+2 & 00001000 & 0000 & 00000111 \\
+3 & 00000100 & 0000 & 00000111 \\
+4 & 00000010 & 0001 & 00000011 \\
+5 & 00000001 & 0011 & 00000001 \\
+\end{tabular}
+\end{center}
+
+优化后除法器：
+\begin{center}
+\begin{tabular}{c|c|c}
+轮数 & 除数寄存器 & 余数寄存器 \\
+\hline
+初始 & 0010 & 00000111 \\
+1 & 0010 & 00001110 \\
+2 & 0010 & 00011100 \\
+3 & 0010 & 00011001 \\
+4 & 0010 & 00010011 \\
+\end{tabular}
+\end{center}
+
+\end{solution}
 \end{document}
