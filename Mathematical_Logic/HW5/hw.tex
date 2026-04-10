@@ -1,0 +1,40 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, color, framed, graphicx, hyperref, mathrsfs}
+
+\title{\textbf{4月10日作业}}
+\author{韩岳成 524531910029}
+\date{\today}
+\linespread{1.5}
+\definecolor{shadecolor}{RGB}{241, 241, 255}
+\newcounter{problemname}
+\newenvironment{problem}{\begin{shaded}\stepcounter{problemname}\par\noindent\textbf{题目\arabic{problemname}. }}{\end{shaded}\par}
+\newenvironment{solution}{\par\noindent\textbf{解答. }}{\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\par}
+\everymath{\displaystyle}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+    (紧致性定理)求证，若$\Gamma \models p$, 则定有$\Gamma$的有限子集$\Sigma$使$\Sigma \models p$.
+\end{problem}
+
+\begin{solution}
+    由于$\Gamma \models p$, 又由命题逻辑的完备性定理, 则$\Gamma \vdash p$. 
+
+    因此存在证明$\langle p_1, p_2, \cdots, p_n \rangle$且$p_n = p$, 且对于每个$1 \leq i \leq n$, $p_i$要么是公理, 要么是$\Gamma$中的一个公式, 要么是前面某些公式的蕴含式的结论.
+
+    设$\Sigma = \{p_i \in \Gamma: 1 \leq i \leq n\}$, 则$\Sigma$是$\Gamma$的一个有限子集. 又由于$\langle p_1, p_2, \cdots, p_n \rangle$是一个证明, 则$\Sigma \vdash p$. 因此$\Sigma \models p$.
+\end{solution}
+
+\begin{problem}
+    证明以下各对公式是等值的：
+    \begin{enumerate}
+        \item $(\lnot p \land \lnot q) \to \lnot r$和$r\to(q \lor p)$.
+        \item $\lnot(\lnot p \lor q) \lor r$和$(p \to q) \to r$.
+    \end{enumerate}
+\end{problem}
+
+
+\end{document}
