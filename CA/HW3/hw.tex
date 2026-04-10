@@ -80,10 +80,10 @@
 \section*{三、问答题}
 
 \begin{enumerate}
-    \item 设CS=2500H，DS=2400H，SS=2430H，BP=0200H，SI=0010H，DI=0206H，请分别写出下述x86指令的源操作数的物理地址。
+    \item 设CS=2500H，DS=2400H，SS=2430H，BX=0200H，SI=0010H，DI=0206H，请分别写出下述x86指令的源操作数的物理地址。
     \begin{enumerate}
         \item MOV AX，[2000H]
-        \item MOV AX，[BP+SI+4]
+        \item MOV AX，[BX+SI+4]
         \item MOV AX，[DI+100H]
     \end{enumerate}
 
@@ -91,7 +91,7 @@
 
     \begin{enumerate}
             \item 26000H
-            \item 24514H
+            \item 24214H
             \item 24306H
     \end{enumerate}
 
@@ -113,8 +113,8 @@
     \textbf{解答：}
 
     \begin{enumerate}
-        \item 124FH
-        \item 259个字节
+        \item[(1)] 124FH
+        \item[(2)] 259个字节
     \end{enumerate}
 
     \item 阅读下面的MIPS汇编程序片段，已知第一条指令的地址为0x40000020，第一条指令的16位立即数为0x0008，第三条指令的26位立即数字段为0x0300F0。
@@ -130,8 +130,8 @@
 
 \textbf{解答：}
     \begin{enumerate}
-        \item 分支条件成立时的目标地址为0x40000044，如果不成立则目标地址为0x40000024。
-        \item 0x400C03C0
-        \item 不能。因为j指令的目标地址由当前PC的高4位和指令中的26位立即数组成，而当前PC的高四位为0x40，无法直接跳转到0x30开头的地址空间。
+        \item[(1)] 分支条件成立时的目标地址为0x40000044，如果不成立则目标地址为0x40000024。
+        \item[(2)] 0x400C03C0
+        \item[(3)] 不能。因为j指令的目标地址由当前PC+4的高4位和指令中的26位立即数组成，而当前PC的高四位为0x40，无法直接跳转到0x30开头的地址空间。
     \end{enumerate}
 \end{document}

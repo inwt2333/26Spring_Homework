@@ -107,9 +107,11 @@
     在$x > a$区域，粒子满足的薛定谔方程为：
     \[ -\frac{\hbar^2}{2m} \frac{d^2 \psi}{dx^2} + V_0 \psi = E \psi \]
     其解为：
-    \[ \psi(x) = C e^{-\kappa (x-a)} \]
+    \[ \psi(x) = C e^{-\kappa (x-a)} + D e^{\kappa (x-a)}\]
     其中$\kappa = \sqrt{\frac{2m(V_0 - E)}{\hbar^2}}$。
-    
+    由于束缚态波函数必须在$x\to \infty$处衰减，因此$D=0$，波函数简化为：
+    \[ \psi(x) = C e^{-\kappa (x-a)} \]
+
     在$x=a$处，波函数及其导数必须连续，因此有以下边界条件：
     \[ A \sin(ka) = C e^{-\kappa (a-a)} = C \]
     \[ k A \cos(ka) = -\kappa C e^{-\kappa (a-a)} = -\kappa C \]
@@ -118,6 +120,55 @@
     \[ k \cot(ka) = -\kappa \]
     这就是束缚态能级的表达式。
 
-2.有限深势阱总存在至少一个束缚态（对于一维情况）。但对于这种半壁无限高（一边势垒高度有限），只要势阱深度$V_0$和宽度$a$满足条件，就存在解。该超越方程$k \cot(ka) = -\kappa$始终在第一象限有解，因此无需额外条件，该势阱中始终存在至少一个束缚态。
+2.
+由第 1 问可知，束缚态（$0 < E < V_0$）的波函数需满足超越方程：
+\[
+    k \cot(ka) = -\kappa
+\]
+其中，由于 $E > 0$ 且 $E < V_0$，波数 $k$ 和衰减常数 $\kappa$ 均为正实数：
+\[
+    k = \frac{\sqrt{2mE}}{\hbar} > 0, \quad \kappa = \frac{\sqrt{2m(V_0 - E)}}{\hbar} > 0
+\]
+
+为了方便讨论，我们在方程两边同乘势阱宽度 $a$，引入无量纲变量 $\xi$ 和 $\eta$：
+\[
+    \xi = ka > 0, \quad \eta = \kappa a > 0
+\]
+此时，超越方程化为：
+\[
+    \xi \cot(\xi) = -\eta \quad \Rightarrow \quad \eta = -\xi \cot(\xi)
+\]
+
+同时，注意 $\xi$ 和 $\eta$ 满足一个圆的方程约束。计算它们的平方和：
+\[
+    \xi^2 + \eta^2 = (ka)^2 + (\kappa a)^2 = \frac{2mEa^2}{\hbar^2} + \frac{2m(V_0 - E)a^2}{\hbar^2} = \frac{2mV_0a^2}{\hbar^2}
+\]
+令 $R = \sqrt{\frac{2mV_0a^2}{\hbar^2}}$，则 $\xi$ 和 $\eta$ 必须同时满足第一象限内的圆方程：
+\[
+    \xi^2 + \eta^2 = R^2 \quad (\text{其中 } \xi > 0, \eta > 0)
+\]
+
+问题的本质转化为：\textbf{在 $\xi-\eta$ 坐标系的第一象限内，曲线 $\eta = -\xi \cot(\xi)$ 与圆 $\xi^2 + \eta^2 = R^2$ 至少存在一个交点的条件是什么？}
+
+我们分析曲线 $\eta = -\xi \cot(\xi)$ 的性质：
+\begin{itemize}
+    \item 当 $0 < \xi < \frac{\pi}{2}$ 时，$\cot(\xi) > 0$，故 $\eta = -\xi \cot(\xi) < 0$。这说明曲线在第一象限（$\xi \in (0, \pi/2)$）内\textbf{无图象}（因为要求 $\eta > 0$）。
+    \item 当 $\frac{\pi}{2} < \xi < \pi$ 时，$\cot(\xi) < 0$，故 $\eta = -\xi \cot(\xi) > 0$。曲线在此区间进入上半平面（即第一象限所在区域）。
+    \item 当 $\xi \to \left(\frac{\pi}{2}\right)^+$ 时，$\cot(\xi) \to 0^-$，从而 $\eta \to 0^+$。这表明曲线与 $\xi$ 轴的正半轴交于点 $\left(\frac{\pi}{2}, 0\right)$，并随着 $\xi$ 增大向右上方单调递增。
+\end{itemize}
+
+因此，为了让半径为 $R$ 的圆心在原点的圆弧，能够与从 $\left(\frac{\pi}{2}, 0\right)$ 出发的曲线 $\eta = -\xi \cot(\xi)$ 在第一象限（严格来说是 $\eta > 0$ 区域）发生相交，圆的半径 $R$ 必须严格大于交点的横坐标起点：
+\[
+    R > \frac{\pi}{2}
+\]
+将 $R$ 的表达式代回：
+\[
+    \sqrt{\frac{2mV_0a^2}{\hbar^2}} > \frac{\pi}{2}
+\]
+两边平方并整理，得到势阱深度 $V_0$ 和宽度 $a$ 必须满足的关系：
+\[
+    V_0 a^2 > \frac{\pi^2 \hbar^2}{8m}
+\]
+
 \end{solution}
 \end{document}
