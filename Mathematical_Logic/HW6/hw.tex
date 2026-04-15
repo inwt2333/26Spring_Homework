@@ -1,0 +1,167 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, color, framed, graphicx, hyperref, mathrsfs}
+\usepackage[margin=2cm]{geometry}
+
+\title{\textbf{4月15日作业}}
+\author{韩岳成 524531910029}
+\date{\today}
+\linespread{1.5}
+\definecolor{shadecolor}{RGB}{241, 241, 255}
+\newcounter{problemname}
+\newenvironment{problem}{\begin{shaded}\stepcounter{problemname}\par\noindent\textbf{题目\arabic{problemname}. }}{\end{shaded}\par}
+\newenvironment{solution}{\par\noindent\textbf{解答. }}{\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\par}
+\everymath{\displaystyle}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+    求以下公式的等值主析取范式：
+    \begin{enumerate}
+        \item $(x_1 \land x_2) \lor (\lnot x_2 \leftrightarrow x_3)$
+        \item $\lnot ((x_1 \to \lnot x_2) \to x_3)$
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+    1. 列出真值表：
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c|c|c}
+            $x_1$ & $x_2$ & $x_3$ & $x_1 \land x_2$ & $\lnot x_2$  & $\lnot x_2 \leftrightarrow x_3$ & $(x_1 \land x_2) \lor (\lnot x_2 \leftrightarrow x_3)$  \\
+            \hline
+            0 & 0 & 0 & 0 & 1 & 0 & 0  \\
+            0 & 0 & 1 & 0 & 1 & 1 & 1  \\
+            0 & 1 & 0 & 0 & 0 & 1 & 1  \\
+            0 & 1 & 1 & 0 & 0 & 0 & 0  \\
+            1 & 0 & 0 & 0 & 1 & 0 & 0  \\
+            1 & 0 & 1 & 0 & 1 & 1 & 1  \\
+            1 & 1 & 0 & 1 & 0 & 1 & 1  \\
+            1 & 1 & 1 & 1 & 0 & 0 & 1  \\
+        \end{tabular}
+    \end{center}
+    从真值表中可以看出，当$(x_1, x_2, x_3) = (0, 0, 1), (0, 1, 0), (1, 0, 1), (1, 1, 0), (1, 1, 1)$时，公式的值为真。根据这些情况，我们可以写出等值主析取范式：
+    \[(\lnot x_1 \land \lnot x_2 \land x_3) \lor (\lnot x_1 \land x_2 \land \lnot x_3) \lor (x_1 \land \lnot x_2 \land x_3) \lor (x_1 \land x_2 \land \lnot x_3) \lor (x_1 \land x_2 \land x_3)\]
+
+    2. 列出真值表：
+    \begin{center}
+        \begin{tabular}{c|c|c|c|c|c|c}
+            $x_1$ & $x_2$ & $x_3$ & $\lnot x_2$& $x_1 \to \lnot x_2$ & $(x_1 \to \lnot x_2) \to x_3$ & $\lnot ((x_1 \to \lnot x_2) \to x_3)$  \\
+            \hline
+            0 & 0 & 0 & 1 & 1 & 0 & 1  \\
+            0 & 0 & 1 & 1 & 1 & 1 & 0  \\
+            0 & 1 & 0 & 0 & 1 & 0 & 1  \\
+            0 & 1 & 1 & 0 & 1 & 1 & 0  \\
+            1 & 0 & 0 & 1 & 1 & 0 & 1  \\
+            1 & 0 & 1 & 1 & 1 & 1 & 0  \\
+            1 & 1 & 0 & 0 & 0 & 1 & 0  \\
+            1 & 1 & 1 & 0 & 0 & 1 & 0  \\
+        \end{tabular}
+    \end{center}
+    从真值表中可以看出，当$(x_1, x_2, x_3) = (0, 0, 0), (0, 1, 0), (1, 0, 0)$时，公式的值为真。根据这些情况，我们可以写出等值主析取范式：
+    \[(\lnot x_1 \land \lnot x_2 \land \lnot x_3) \lor (\lnot x_1 \land x_2 \land \lnot x_3) \lor (x_1 \land \lnot x_2 \land \lnot x_3)\]
+\end{solution}
+
+\begin{problem}
+求以下公式的等值主合取范式：
+    \begin{enumerate}
+        \item $(x_1 \land x_2 \land x_3) \lor (\lnot x_1 \land \lnot x_2 \land x_3)$
+        \item $((x_1 \to x_2) \to x_3) \to x_4$
+    \end{enumerate}
+\end{problem}
+
+\begin{solution}
+1. 列出真值表：
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|c}
+        $x_1$ & $x_2$ & $x_3$ & $x_1 \land x_2 \land x_3$ & $\lnot x_1 \land \lnot x_2 \land x_3$ & $(x_1 \land x_2 \land x_3) \lor (\lnot x_1 \land \lnot x_2 \land x_3)$  \\
+        \hline
+        0 & 0 & 0 & 0 & 0 & 0  \\
+        0 & 0 & 1 & 0 & 1 & 1  \\
+        0 & 1 & 0 & 0 & 0 & 0  \\
+        0 & 1 & 1 & 0 & 0 & 0  \\
+        1 & 0 & 0 & 0 & 0 & 0  \\
+        1 & 0 & 1 & 0 & 0 & 0  \\
+        1 & 1 & 0 & 0 & 0 & 0  \\
+        1 & 1 & 1 & 1 & 0 & 1  \\
+    \end{tabular}
+\end{center}
+从真值表中可以看出，当$(x_1, x_2, x_3) = (0, 0, 0), (0, 1, 0), (0, 1, 1), (1, 0, 0), (1, 0, 1), (1, 1, 0)$时，公式的值为假。根据这些情况，我们可以写出$\lnot((x_1 \land x_2 \land x_3) \lor (\lnot x_1 \land \lnot x_2 \land x_3))$的等值主析取范式：
+\[(\lnot x_1 \land \lnot x_2 \land \lnot x_3) \lor (\lnot x_1 \land x_2 \land \lnot x_3) \lor (\lnot x_1 \land x_2 \land x_3) \lor (x_1 \land \lnot x_2 \land \lnot x_3) \lor (x_1 \land \lnot x_2 \land x_3) \lor (x_1 \land x_2 \land \lnot x_3)\]
+
+因此$(x_1 \land x_2 \land x_3) \lor (\lnot x_1 \land \lnot x_2 \land x_3)$的等值主合取范式为：
+\[(x_1 \lor x_2 \lor x_3) \land (x_1 \lor \lnot x_2 \lor x_3) \land (x_1 \lor \lnot x_2 \lor \lnot x_3) \land (\lnot x_1 \lor x_2 \lor x_3) \land (\lnot x_1 \lor x_2 \lor \lnot x_3) \land (\lnot x_1 \lor \lnot x_2 \lor x_3)\]
+
+2. 列出真值表：
+\begin{center}
+    \begin{tabular}{c|c|c|c|c|c|c}
+        $x_1$ & $x_2$ & $x_3$ & $x_4$ & $x_1 \to x_2$ & $(x_1 \to x_2) \to x_3$ & $((x_1 \to x_2) \to x_3) \to x_4$ \\
+        \hline
+        0 & 0 & 0 & 0 & 1 & 0 & 1 \\
+        0 & 0 & 0 & 1 & 1 & 0 & 1 \\
+        0 & 0 & 1 & 0 & 1 & 1 & 0 \\
+        0 & 0 & 1 & 1 & 1 & 1 & 1 \\
+        0 & 1 & 0 & 0 & 1 & 0 & 1 \\
+        0 & 1 & 0 & 1 & 1 & 0 & 1 \\
+        0 & 1 & 1 & 0 & 1 & 1 & 0 \\
+        0 & 1 & 1 & 1 & 1 & 1 & 1 \\
+        1 & 0 & 0 & 0 & 0 & 1 & 0 \\
+        1 & 0 & 0 & 1 & 0 & 1 & 1 \\
+        1 & 0 & 1 & 0 & 0 & 1 & 0 \\
+        1 & 0 & 1 & 1 & 0 & 1 & 1 \\
+        1 & 1 & 0 & 0 & 1 & 0 & 1 \\
+        1 & 1 & 0 & 1 & 1 & 0 & 1 \\
+        1 & 1 & 1 & 0 & 1 & 1 & 0 \\
+        1 & 1 & 1 & 1 & 1 & 1 & 1 \\
+    \end{tabular}
+\end{center}
+从真值表中可以看出，当$(x_1, x_2, x_3, x_4) = (0, 0, 1, 0), (0, 1, 1, 0), (1, 0, 0, 0), (1, 0, 1, 0), (1, 1, 1, 0)$时，公式的值为假。根据这些情况，我们可以写出$\lnot(((x_1 \to x_2) \to x_3) \to x_4)$的等值主析取范式：
+\[(\lnot x_1 \land \lnot x_2 \land x_3 \land \lnot x_4) \lor (\lnot x_1 \land x_2 \land x_3 \land \lnot x_4) \lor (x_1 \land \lnot x_2 \land \lnot x_3 \land \lnot x_4) \lor (x_1 \land \lnot x_2 \land x_3 \land \lnot x_4) \lor (x_1 \land x_2 \land x_3 \land \lnot x_4)\]
+
+因此$((x_1 \to x_2) \to x_3) \to x_4$的等值主合取范式为：
+\[(x_1 \lor x_2 \lor \lnot x_3 \lor x_4) \land (x_1 \lor \lnot x_2 \lor \lnot x_3 \lor x_4) \land (\lnot x_1 \lor x_2 \lor x_3 \lor x_4) \land (\lnot x_1 \lor x_2 \lor \lnot x_3 \lor x_4) \land (\lnot x_1 \lor \lnot x_2 \lor \lnot x_3 \lor x_4)\]
+\end{solution}
+
+\begin{problem}
+证明等式
+\begin{enumerate}
+    \item $\lnot v_1 = v_1 | v_1 = v_1 \downarrow v_1$
+    \item $v_1 \lor v_2 = (v_1 | v_1) | (v_2 | v_2)$
+    \item $v_1 \land v_2 = (v_1 \downarrow v_1) \downarrow (v_2 \downarrow v_2)$
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+1. 由定义，$v_1 | v_1 = \lnot(v_1 \land v_1) = \lnot v_1$，同样地，$v_1 \downarrow v_1 = \lnot(v_1 \lor v_1) = \lnot v_1$。因此$\lnot v_1 = v_1 | v_1 = v_1 \downarrow v_1$。
+
+2. 由1，我们有$v_1 | v_1 = \lnot v_1$和$v_2 | v_2 = \lnot v_2$，因此$(v_1 | v_1) | (v_2 | v_2) = \lnot v_1 | \lnot v_2 = \lnot(\lnot v_1 \land \lnot v_2) = v_1 \lor v_2$。
+
+3. 由1，我们有$v_1 \downarrow v_1 = \lnot v_1$和$v_2 \downarrow v_2 = \lnot v_2$，因此$(v_1 \downarrow v_1) \downarrow (v_2 \downarrow v_2) = \lnot v_1 \downarrow \lnot v_2 = \lnot(\lnot v_1 \lor \lnot v_2) = v_1 \land v_2$。
+\end{solution}
+
+\begin{problem}
+找出只含有运算$\lnot$和$\land$的公式，使之与以下公式等值：
+\[ (x_1 \leftrightarrow \lnot x_2) \leftrightarrow x_3 \]
+\end{problem}
+
+\begin{solution}
+首先将 $x_1 \leftrightarrow \lnot x_2$ 转化为只含 $\lnot$ 和 $\land$ 的形式：
+\begin{align*}
+x_1 \leftrightarrow \lnot x_2 & \equiv (x_1 \to \lnot x_2) \land (\lnot x_2 \to x_1) \\
+& \equiv (\lnot x_1 \lor \lnot x_2) \land (x_2 \lor x_1) \\
+& \equiv \lnot(x_1 \land x_2) \land \lnot(\lnot x_1 \land \lnot x_2)
+\end{align*}
+
+为了书写方便，令 $p = \lnot(x_1 \land x_2) \land \lnot(\lnot x_1 \land \lnot x_2)$。接着处理原公式：
+\begin{align*}
+(x_1 \leftrightarrow \lnot x_2) \leftrightarrow x_3 & \equiv p \leftrightarrow x_3 \\
+& \equiv (p \to x_3) \land (x_3 \to p) \\
+& \equiv (\lnot p \lor x_3) \land (\lnot x_3 \lor p) \\
+& \equiv \lnot(p \land \lnot x_3) \land \lnot(\lnot p \land x_3)
+\end{align*}
+
+最后，将 $p$ 替换回原来只含 $\lnot$ 和 $\land$ 的式子，即可得到：
+\[ \lnot\big((\lnot(x_1 \land x_2) \land \lnot(\lnot x_1 \land \lnot x_2)) \land \lnot x_3\big) \land \lnot\big(\lnot(\lnot(x_1 \land x_2) \land \lnot(\lnot x_1 \land \lnot x_2)) \land x_3\big) \]
+\end{solution}
+\end{document}
