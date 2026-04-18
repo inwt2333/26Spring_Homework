@@ -67,22 +67,25 @@ $x = 0$ 处反射，粒子从左边入射，计算当粒子能量 $E > V_0$ 和 
 \begin{solution}
 因为 $t=0$ 时 $\psi(x, 0)$ 是归一化波函数，因此 \[\int_0^a A^2 x^2 (a-x)^2 dx = 1 \implies A^2 \frac{a^5}{30} = 1 \implies A = \sqrt{\frac{30}{a^5}}\]
 
-(1) 能量平均值 $\bar{E} = \langle \hat{H} \rangle = \int_0^a \psi(x, 0)^+ \hat{H} \psi(x, 0) dx$.\[\hat{H} \psi = -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} (A(ax-x^2)) = \frac{\hbar^2}{m} A\]
+(1) 能量平均值 $\bar{E} = \langle \hat{H} \rangle = \int_0^a \psi^*(x, 0) \hat{H} \psi(x, 0) dx$.\[\hat{H} \psi = -\frac{\hbar^2}{2m} \frac{d^2}{dx^2} (A(ax-x^2)) = \frac{\hbar^2}{m} A\]
 \[ \Rightarrow \bar{E} = \frac{\hbar^2 A}{m} \int_0^a A(ax-x^2) dx = \frac{\hbar^2 A^2}{m} \frac{a^3}{6} = \frac{5\hbar^2}{m a^2}\]
 
-(2) 坐标平均值 $\bar{x} = \int_0^a x |\psi(x,0)|^2 dx = \int_0^a A^2 x^3(a-x)^2 dx = A^2 (\frac{a^6}{4} - \frac{2a^6}{5} + \frac{a^6}{6}) = A^2 \frac{a^6}{60} = \frac{a}{2}$。
-动量平均值 $\bar{p}_x = \int_0^a \psi(x,0)^+ (-i\hbar \frac{d}{dx}) \psi(x,0) dx = -i\hbar A^2 \int_0^a x(a-x)(a-2x) dx = 0$。
+(2) 坐标平均值 \[\bar{x} = \int_0^a x |\psi(x,0)|^2 dx = \int_0^a A^2 x^3(a-x)^2 dx = A^2 (\frac{a^6}{4} - \frac{2a^6}{5} + \frac{a^6}{6}) = A^2 \frac{a^6}{60} = \frac{a}{2}\]
+动量平均值 \[\bar{p}_x = \int_0^a \psi(x,0)^+ (-i\hbar \frac{d}{dx}) \psi(x,0) dx = -i\hbar A^2 \int_0^a x(a-x)(a-2x) dx = 0\]
 
-(3) 动量的方均根偏差 $\Delta p_x$：
-由于 $\langle \hat{p}_x^2 \rangle = 2m\langle \hat{H} \rangle = \frac{10\hbar^2}{a^2}$（因为在方势阱中，动能即总能量，势能为0），且 $\bar{p}_x = 0$，所以 $\Delta p_x = \sqrt{\langle \hat{p}_x^2 \rangle} = \frac{\sqrt{10}\hbar}{a}$。
+(3) 由于 $\langle \hat{p}_x^2 \rangle = 2m\langle \hat{H} \rangle = \frac{10\hbar^2}{a^2}$，且 $\bar{p}_x = 0$，所以 $\Delta p_x = \sqrt{\langle \hat{p}_x^2 \rangle} = \frac{\sqrt{10}\hbar}{a}$。
 
 (4) 将初始态按能量本征态展开：$\psi(x, 0) = \sum_{n=1}^\infty c_n \psi_n(x)$。
 
 展开系数 $c_n = \int_0^a \psi_n^*(x)\psi(x,0)dx = \sqrt{\frac{2}{a}} A \int_0^a x(a-x) \sin \frac{n\pi x}{a} dx$。
+
 计算积分，运用分部积分法得到 $c_n = \frac{8\sqrt{15}}{n^3 \pi^3} [1 - (-1)^n] / 2$。
+
 当 $n$ 为偶数时，$c_n = 0$；
+
 当 $n$ 为奇数时，$c_n = \frac{8\sqrt{15}}{n^3 \pi^3}$。
-所以 $t$ 时刻的波函数为 $\psi(x, t) = \sum_{n=1,3,5\dots}^\infty \frac{8\sqrt{15}}{n^3 \pi^3} \sqrt{\frac{2}{a}} \sin\left(\frac{n\pi x}{a}\right) e^{-iE_n t/\hbar}$。
+
+所以 $t$ 时刻的波函数为 $\psi(x, t) = \sum_{n=1,3,5\dots}^\infty \frac{8\sqrt{15}}{n^3 \pi^3} \sqrt{\frac{2}{a}} \sin\left(\frac{n\pi x}{a}\right) e^{-in^2\pi^2\hbar t/2ma^2 }$
 \end{solution}
 
 \begin{problem}
@@ -95,6 +98,7 @@ $x = 0$ 处反射，粒子从左边入射，计算当粒子能量 $E > V_0$ 和 
 (2) $[p_x, L_y] = [p_x, zp_x - xp_z] = z[p_x, p_x] + [p_x, z]p_x - x[p_x, p_z] - [p_x, x]p_z = -(-i\hbar)p_z = i\hbar p_z$
 
 (3) $[L_x, L_y] = [yp_z - zp_y, zp_x - xp_z] = y[p_z, zp_x] - x[yp_z, p_z] - [zp_y, zp_x] + [zp_y, xp_z]$
+
 其中含有不为零的对易子的项为：$y[p_z, z]p_x + x[z, p_z]p_y = y(-i\hbar)p_x + x(i\hbar)p_y = i\hbar (xp_y - yp_x) = i\hbar L_z$
 
 (4) $[L^2, L_x] = [L_x^2 + L_y^2 + L_z^2, L_x] = [L_y^2, L_x] + [L_z^2, L_x]$
@@ -112,22 +116,23 @@ $= L_y(-i\hbar L_z) + (-i\hbar L_z)L_y + L_z(i\hbar L_y) + (i\hbar L_y)L_z = 0$
 
 \begin{solution}
 (1) 验证归一化条件：
-$\int_0^{2\pi} |\Psi(\phi)|^2 d\phi = \int_0^{2\pi} \left( \frac{1}{3\pi} + \frac{1}{6\pi} + \frac{\sqrt{2}}{6\pi} (e^{i\phi} + e^{-i\phi}) \right) d\phi$
-$= \left(\frac{1}{3\pi} + \frac{1}{6\pi}\right) \times 2\pi + 0 = \frac{1}{2\pi} \times 2\pi = 1$。
+\begin{align*}
+\int_0^{2\pi} |\Psi(\phi)|^2 d\phi &= \int_0^{2\pi} \left( \frac{1}{3\pi} + \frac{1}{6\pi} + \frac{\sqrt{2}}{6\pi} (e^{i\phi} + e^{-i\phi}) \right) d\phi \\
+&= \left(\frac{1}{3\pi} + \frac{1}{6\pi}\right) \times 2\pi + 0 = \frac{1}{2\pi} \times 2\pi = 1
+\end{align*}
 故该波函数归一化。
 
 (2) 进行 $\hat{L}_z$ 测量的可能值：
-将波函数展开为 $\hat{L}_z$ 在 $\phi$ 表象中的本征态 $\Phi_m(\phi) = \frac{1}{\sqrt{2\pi}} e^{im\phi}$（其本征值为 $L_z = m\hbar$）。
-$\Psi(\phi) = \frac{\sqrt{2}}{\sqrt{3}}\frac{1}{\sqrt{2\pi}} + \frac{1}{\sqrt{3}}\frac{1}{\sqrt{2\pi}} e^{-i\phi} = \sqrt{\frac{2}{3}}\Phi_0(\phi) + \sqrt{\frac{1}{3}}\Phi_{-1}(\phi)$。
+将波函数展开为 $\hat{L}_z$ 在 $\phi$ 表象中的本征态 $\Phi_m(\phi) = \frac{1}{\sqrt{2\pi}} e^{im\phi}$：
+\[\Psi(\phi) = \frac{\sqrt{2}}{\sqrt{3}}\frac{1}{\sqrt{2\pi}} + \frac{1}{\sqrt{3}}\frac{1}{\sqrt{2\pi}} e^{-i\phi} = \sqrt{\frac{2}{3}}\Phi_0(\phi) + \sqrt{\frac{1}{3}}\Phi_{-1}(\phi)\]
 因此，测量 $\hat{L}_z$ 可能得到的值为对应的本征值：$m=0$ 时的 $0$，和 $m=-1$ 时的 $-\hbar$。
 
 (3) 对应概率分别为绝对值的平方：
 得到 $0$ 的概率 $P(0) = \left|\sqrt{\frac{2}{3}}\right|^2 = \frac{2}{3}$。
 得到 $-\hbar$ 的概率 $P(-\hbar) = \left|\sqrt{\frac{1}{3}}\right|^2 = \frac{1}{3}$。
 
-(4) 期望值 $\langle \hat{L}_z \rangle$：
-$\langle \hat{L}_z \rangle = \sum P_m L_{z_m} = \frac{2}{3} \times 0 + \frac{1}{3} \times (-\hbar) = -\frac{1}{3}\hbar$。
-也可以通过积分直接计算 $\int \Psi^* \left(-i\hbar \frac{\partial}{\partial \phi}\right) \Psi d\phi = -\frac{1}{3}\hbar$。
+(4) 
+\[\langle \hat{L}_z \rangle = \sum P_m L_{z_m} = \frac{2}{3} \times 0 + \frac{1}{3} \times (-\hbar) = -\frac{1}{3}\hbar\]
 \end{solution}
 
 \begin{problem}
@@ -144,20 +149,24 @@ $\langle \hat{L}_z \rangle = \sum P_m L_{z_m} = \frac{2}{3} \times 0 + \frac{1}{
 
 \begin{solution}
 (1) $t=0$ 时的波函数归一化：
-$\int |\Psi(x,0)|^2 dx = \frac{1}{2} + \frac{1}{5} + |A|^2 = 1$。
+\[\int |\Psi(x,0)|^2 dx = \frac{1}{2} + \frac{1}{5} + |A|^2 = 1\]
 则 $|A|^2 = 1 - 0.7 = 0.3 = \frac{3}{10}$，所以可取 $A = \sqrt{\frac{3}{10}}$。
+
 因为谐振子的能量本征值为 $E_n = \left(n + \frac{1}{2}\right)\hbar\omega$，根据随时间演化的因子 $e^{-iE_nt/\hbar}$：
+
 $t$ 时刻的归一化波函数为
-$\Psi(x, t) = \sqrt{\frac{1}{2}} \psi_0(x) e^{-i\omega t/2} + i\sqrt{\frac{1}{5}} \psi_1(x) e^{-i3\omega t/2} + \sqrt{\frac{3}{10}} \psi_2(x) e^{-i5\omega t/2}$。
+\[\Psi(x, t) = \sqrt{\frac{1}{2}} \psi_0(x) e^{-i\omega t/2} + i\sqrt{\frac{1}{5}} \psi_1(x) e^{-i3\omega t/2} + \sqrt{\frac{3}{10}} \psi_2(x) e^{-i5\omega t/2}\]
 
 (2) $3\hbar\omega/2$ 是 $n=1$ 的能量本征态，因为能量是定态随时间演化的守恒量。
 所以 $t$ 时刻测量出 $E = 3\hbar\omega/2$ 的概率等于它在 $t=0$ 时的投影模方：
-$P(E_1) = |\langle \psi_1 | \Psi(x,t) \rangle|^2 = \left|i\sqrt{\frac{1}{5}} e^{-i3\omega t/2}\right|^2 = \frac{1}{5}$。
+\[P(E_1) = |\langle \psi_1 | \Psi(x,t) \rangle|^2 = \left|i\sqrt{\frac{1}{5}} e^{-i3\omega t/2}\right|^2 = \frac{1}{5}\]
 
-(3) 系统的平均能量（也是守恒量，与时刻 $t$ 无关）：
+(3)
 由于哈密顿量 $\hat{H}$ 不外显含时，
-$\langle \hat{H} \rangle = \sum_n P(E_n) E_n = P(E_0) E_0 + P(E_1) E_1 + P(E_2) E_2$
-$= \frac{1}{2} \left(\frac{1}{2}\hbar\omega\right) + \frac{1}{5} \left(\frac{3}{2}\hbar\omega\right) + \frac{3}{10} \left(\frac{5}{2}\hbar\omega\right)$
-$= \frac{1}{4}\hbar\omega + \frac{3}{10}\hbar\omega + \frac{3}{4}\hbar\omega = \frac{10+12+30}{40}\hbar\omega = \frac{52}{40}\hbar\omega = \frac{13}{10}\hbar\omega = 1.3\hbar\omega$。
+\begin{align*}
+\langle \hat{H} \rangle &= \sum_n P(E_n) E_n = P(E_0) E_0 + P(E_1) E_1 + P(E_2) E_2\\
+&= \frac{1}{2} \left(\frac{1}{2}\hbar\omega\right) + \frac{1}{5} \left(\frac{3}{2}\hbar\omega\right) + \frac{3}{10} \left(\frac{5}{2}\hbar\omega\right)\\
+&= \frac{1}{4}\hbar\omega + \frac{3}{10}\hbar\omega + \frac{3}{4}\hbar\omega = \frac{13}{10}\hbar\omega
+\end{align*}
 \end{solution}
 \end{document}
