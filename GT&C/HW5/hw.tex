@@ -1,0 +1,117 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, color, framed, graphicx, hyperref, mathrsfs}
+
+\title{\textbf{4月20日作业}}
+\author{韩岳成 524531910029}
+\date{\today}
+\linespread{1.5}
+\definecolor{shadecolor}{RGB}{241, 241, 255}
+\newcounter{problemname}
+\newenvironment{problem}{\begin{shaded}\stepcounter{problemname}\par\noindent\textbf{题目\arabic{problemname}. }}{\end{shaded}\par}
+\newenvironment{solution}{\par\noindent\textbf{解答. }}{\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\par}
+\everymath{\displaystyle}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+    设 G 是一个无孤立点的图，M 是 G 的一个极大匹配，L 是 G 的一个极小边覆盖. 证明：
+    
+    (1) M 是最大匹配当且仅当 M 含于某个最小边覆盖中；
+
+    (2) L 是最小边覆盖当且仅当 L 包含一个最大匹配.
+\end{problem}
+
+\begin{solution}
+    (1)已知 $M$ 是 $G$ 的一个极大匹配。
+
+\vspace{0.5em}
+    $\Rightarrow$: 因为 $M$ 是最大匹配，所以 $|M| = \alpha'(G)$。
+
+    $M$ 中的边覆盖了 $2|M|$ 个顶点。因为图 $G$ 共有 $|V|$ 个顶点，所以还有 $|V| - 2|M|$ 个顶点未被 $M$ 覆盖。
+     
+    因为 $G$ 无孤立点，对于这 $|V| - 2|M|$ 个未被覆盖的顶点，我们为每个顶点任意挑选一条与它相连的边，构成集合 $E'$。显然，$|E'| = |V| - 2|M|$。
+    
+    令 $L = M \cup E'$。显然 $M \subseteq L$，且 $L$ 覆盖了图中的所有顶点，所以 $L$ 是一个边覆盖。
+     
+    计算 $L$ 的边数：
+    \[ |L| = |M| + |E'| = |M| + (|V| - 2|M|) = |V| - |M| \]
+    因为 $|M| = \alpha'(G)$，所以 $|L| = |V| - \alpha'(G)$。
+
+    根据 Gallai 定理，$\beta'(G) = |V| - \alpha'(G)$。因此 $|L| = \beta'(G)$。
+    由于 $L$ 的边数恰好等于最小边覆盖数，所以 $L$ 就是一个最小边覆盖，且 $M \subseteq L$。必要性得证.
+
+
+\vspace{0.5em}
+$\Leftarrow$: 
+    已知 $L_{min}$ 是某个最小边覆盖，所以 $|L_{min}| = \beta'(G)$，且 $M \subseteq L_{min}$。
+    
+    反证假设 $M$ 不是最大匹配。由于 $M$ 是一个匹配，必然有 $|M| < \alpha'(G)$。
+    根据 Gallai 定理，图的最大匹配数与最小边覆盖数满足 $\alpha'(G) + \beta'(G) = |V|$。
+    因此我们有：
+    \[ \beta'(G) = |V| - \alpha'(G) < |V| - |M| \]
+
+    另一方面，我们来分析 $L_{min}$ 的结构。$M$ 中的边覆盖了 $2|M|$ 个顶点，还剩下 $|V| - 2|M|$ 个顶点未被 $M$ 覆盖。
+    $L_{min}$ 必须覆盖这剩余的 $|V| - 2|M|$ 个顶点。由于 $M \subseteq L_{min}$，这些未覆盖的顶点必须由 $L_{min} \setminus M$ 中的边来覆盖。
+    
+    因为 $M$ 是极大匹配，这意味着未被 $M$ 覆盖的顶点之间不可能有边直接相连（否则就可以把这条边加入 $M$，与 $M$ 是极大匹配矛盾）。
+    因此，$L_{min} \setminus M$ 中的任何一条边，最多只能覆盖1个未被 $M$ 覆盖的顶点。
+    要覆盖剩下的 $|V| - 2|M|$ 个孤立顶点，$L_{min} \setminus M$ 中至少需要 $|V| - 2|M|$ 条边。
+    
+    所以，$L_{min}$ 的总边数满足：
+    \[ |L_{min}| = |M| + |L_{min} \setminus M| \ge |M| + (|V| - 2|M|) = |V| - |M| \]
+    即 $\beta'(G) \ge |V| - |M|$。
+
+    但这与前面由反证法假设推导出的 $\beta'(G) < |V| - |M|$ 矛盾！
+    所以假设不成立，$M$ 必定是一个最大匹配（$|M| = \alpha'(G)$）。
+
+
+\vspace{1em}
+
+(2)已知 $L$ 是 $G$ 的一个极小边覆盖。
+
+\vspace{0.5em}
+$\Rightarrow$:因为 $L$ 是最小边覆盖，所以 $|L| = \beta'(G)$。同时，最小必定也是极小，所以 $L$ 是极小边覆盖。
+    
+极小边覆盖的边导出子图，其每个连通分支必定是一个星图。
+     
+假设 $L$ 的边导出子图由 $c$ 个星图组成。在这 $c$ 个星图中，我们从每个星图中恰好选出一条边，组成集合 $M$。
+     
+因为不同的星图没有公共顶点，且每个星图内部只选了一条边，所以 $M$ 中的边互不相交，$M$ 是一个匹配。显然 $M \subseteq L$。这个匹配的大小 $|M| = c$。
+     
+因为 $L$ 覆盖了全部 $|V|$ 个顶点，且有$c$个连通分支，因此 $|L| = |V| - c$。
+结合 $|M| = c$，我们得到 $|L| = |V| - |M|$。
+     
+因为 $|L| = \beta'(G)$，所以 $\beta'(G) = |V| - |M|$，即 $|M| = |V| - \beta'(G)$。
+     
+根据 Gallai 定理，$|V| - \beta'(G) = \alpha'(G)$。所以 $|M| = \alpha'(G)$。
+     
+这说明 $M$ 是一个最大匹配，且 $M \subseteq L$。
+
+\vspace{0.5em}
+$\Leftarrow$:
+    已知极小边覆盖 $L$ 包含一个最大匹配 $M_{\text{max}}$，即 $M_{\text{max}} \subseteq L$ 且 $|M_{\text{max}}| = \alpha'(G)$。
+     
+    反证假设 $L$ 不是最小边覆盖。由于 $\beta'(G)$ 是所有边覆盖能达到的最小边数，因此必有 $|L| > \beta'(G)$。
+     
+    根据 Gallai 定理，最大匹配数与最小边覆盖数满足 $\alpha'(G) + \beta'(G) = |V|$，代入上式得到：
+    \[ |L| > |V| - \alpha'(G) \implies \alpha'(G) > |V| - |L| \]
+     
+     另一方面，由于 $L$ 是极小边覆盖，利用前面提到的性质，$L$ 的边导出子图是由 $c$ 个星图组成的森林，且满足 $|L| = |V| - c$。
+     因此该图包含的星图连通分支总数为 $c = |V| - |L|$。
+     
+    因为 $M_{\text{max}} \subseteq L$，且 $M_{\text{max}}$ 是一个匹配，所以在 $L$ 的每一个星图连通分支中，$M_{\text{max}}$ 最多只能包含其中的 1 条边（如果包含 2 条或以上，它们会在星图的中心点相交，违背匹配的定义）。
+    既然 $c$ 个连通分支每个最多提供 1 条边，所以匹配的边数 $|M_{\text{max}}| \le c$。
+     将 $c = |V| - |L|$ 代入，我们得到：
+     \[ \alpha'(G) = |M_{\text{max}}| \le |V| - |L| \]
+     
+    但这与通过反证法假设推导出的 $\alpha'(G) > |V| - |L|$ 相矛盾！
+     
+     所以假设不成立，$L$ 必定也是一个最小边覆盖。
+
+\end{solution}
+
+
+\end{document}

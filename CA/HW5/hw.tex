@@ -1,0 +1,268 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{ctex}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{fancyvrb} % 用于生成带框的居中代码环境
+
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+\title{\textbf{《AI2803-计算机体系结构》作业 5}}
+\author{韩岳成 524531910029}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{一、选择题}
+
+\begin{enumerate}[label=\arabic*.]
+    % 1
+    \item 【单选】控制器主要可以分为哪两种类型？（B）
+    \begin{enumerate}[label=\Alph*.]
+        \item 运算控制器和存储控制器 \item 硬布线控制器和微程序控制器
+        \item 组合逻辑控制器和时序逻辑控制器 \item 内部控制器和外部控制器
+    \end{enumerate}
+    
+    % 2
+    \item 【单选】以下哪个部件不属于“硬布线控制器”的主要部件？（B）
+    \begin{enumerate}[label=\Alph*.]
+        \item 环形脉冲发生器 \item 控制存储器（CM）
+        \item 指令译码器 \item 微命令编码器
+    \end{enumerate}
+
+    % 3
+    \item 【多选】关于硬布线控制器的特点，以下说法不正确的是？（ACD）
+    \begin{enumerate}[label=\Alph*.]
+        \item 指令执行速度较慢，但易于扩充和修改 \item 直接由组合逻辑电路产生微操作控制信号
+        \item 利用软件方法来设计硬件的技术 \item 将微命令存储在CPU内部的只读存储器中
+    \end{enumerate}
+
+    % 4
+    \item 【单选】在微程序控制器的基本思想中，解释执行“一条机器指令”的是什么？（C）
+    \begin{enumerate}[label=\Alph*.]
+        \item 一条微指令 \item 一个微操作 \item 一段微程序 \item 一个微命令
+    \end{enumerate}
+
+    % 5
+    \item 【单选】与硬布线控制器相比，微程序控制器具有哪些显著优点？（B）
+    \begin{enumerate}[label=\Alph*.]
+        \item 指令执行速度非常快，且硬件逻辑简单 \item 规整性好，且灵活性高
+        \item 不需要占用CPU内部的存储资源 \item 完全消除了指令译码的步骤
+    \end{enumerate}
+
+    % 6
+    \item 【单选】在微程序控制器中，控制存储器（CM）的主要作用是什么？（D）
+    \begin{enumerate}[label=\Alph*.]
+        \item 存放正在执行的机器指令 \item 存放下一条机器指令的地址
+        \item 存放运算器的中间计算结果 \item 存放微程序，每个存储单元存放一个微指令代码
+    \end{enumerate}
+
+    % 7
+    \item 【单选】单周期处理器的时钟周期时间的长短取决于什么？（B）
+    \begin{enumerate}[label=\Alph*.]
+        \item 执行最快的指令 \item 执行最慢的指令 \item 所有指令平均值 \item 固定的10纳秒
+    \end{enumerate}
+
+    % 8
+    \item 【单选】如果一个程序包含 $10^6$ 条指令，运行在一个单周期处理器上，且该处理器的时钟周期时间为 10ns，那么该程序的CPU执行时间是多少？（B）
+    \begin{enumerate}[label=\Alph*.]
+        \item 1 ms \item 10 ms \item 100 ms \item 1 s
+    \end{enumerate}
+
+    % 9
+    \item 【单选】在处理器的控制逻辑中，MemtoReg 控制信号的作用是什么？（C）
+    \begin{enumerate}[label=\Alph*.]
+        \item 控制是否将数据写入存储器 \item 控制ALU的运算类型
+        \item 选择写回寄存器堆的数据来源 \item 控制PC的更新方式
+    \end{enumerate}
+
+    % 10
+    \item 【单选】与单周期处理器相比，多周期处理器在数据通路的设计上为了避免组件资源重复，采取了什么策略？（A）
+    \begin{enumerate}[label=\Alph*.]
+        \item 允许组件在单条指令中多次使用 \item 为每种指令设计独立的数据通路
+        \item 增加独立的ALU用于PC更新 \item 完全移除存储器
+    \end{enumerate}
+
+    % 11
+    \item 【单选】与单周期处理器相比，多周期处理器的控制逻辑设计有何缺点？（D）
+    \begin{enumerate}[label=\Alph*.]
+        \item 信号控制更简单，数据通路更清晰 \item 不需要任何状态组件 \item 时钟周期被浪费得更多 \item 导致更复杂的数据通路和更复杂的信号控制
+    \end{enumerate}
+
+    \item 【单选】MIPS的五级流水线结构中，计算访存的地址是在哪个阶段完成的？（C）
+    \begin{enumerate}[label=\Alph*.]
+        \item 取指 \item 译码 \item 执行 \item 访存 \item 写回
+    \end{enumerate}
+
+    \item 【单选】MIPS的五级流水线结构中，读寄存器堆是在哪个阶段完成的？（B）
+    \begin{enumerate}[label=\Alph*.]
+        \item 取指 \item 译码 \item 执行 \item 访存 \item 写回
+    \end{enumerate}
+
+    \item 【单选】一个五级流水线的处理器，时钟频率为1GHz。运行一段5条指令的代码，在流水线不停顿的情况下，运行时间为？（D）
+    \begin{enumerate}[label=\Alph*.]
+        \item 25ns \item 8ns \item 50ns \item 9ns 
+    \end{enumerate}
+
+    \item 【单选】一个五级流水线的处理器，时钟频率为2GHz。运行一段8条指令的代码，在流水线不停顿的情况下，运行时间为？（C）
+    \begin{enumerate}[label=\Alph*.]
+        \item 2ns \item 16ns \item 6ns \item 10ns 
+    \end{enumerate}
+
+    \item 【多选】以下哪些是处理器采用流水线技术的目的？（AB）
+    \begin{enumerate}[label=\Alph*.]
+        \item 提高指令的吞吐率 \item 提高时钟频率 \item 降低功耗 \item 简化硬件电路
+    \end{enumerate}
+
+    \item 【单选】以下哪个方法，可以解决所有的冒险？（B）
+    \begin{enumerate}[label=\Alph*.]
+        \item 前递技术 \item 让流水线停顿 \item 增加流水线深度 \item 增加运算部件
+    \end{enumerate}
+
+    \item 【单选】流水线中的转移开销主要由哪两方面的判定或生成引起？（B）
+    \begin{enumerate}[label=\Alph*.]
+        \item 转移条件判定与寻址方式 \item 转移条件判定与生成目标地址 
+        \item 生成目标地址与操作数读取 \item 指令预取废除与数据写回 
+    \end{enumerate}
+
+    \item 【单选】对于典型的MIPS五级流水线处理器，按照指令执行的正常流程，beq指令的分支条件判定会在哪个阶段完成？(C)
+    \begin{enumerate}[label=\Alph*.]
+        \item 取指 \item 译码 \item 执行 \item 访存 \item 写回
+    \end{enumerate}
+
+     \item 【多选】对于典型的MIPS五级流水线处理器（不做数据前递，指令存储器和数据存储器分开），下面这段代码中，存在哪些冒险？（AB）
+    \begin{center}
+    \begin{BVerbatim}[frame=single, framesep=3mm]
+        lw $1, 40($6)
+        beq $2, $1, Label
+        add $6, $6, $2 
+        add $6, $6, $1 
+Label:  add $2, $6, $6
+    \end{BVerbatim}
+    \end{center}
+    \begin{enumerate}[label=\Alph*：]
+        \item 数据冒险 \item 控制冒险 \item 结构冒险 \item 指令冒险
+    \end{enumerate}
+
+    % 2
+    \item 【单选】对于典型的MIPS五级流水线处理器（不做数据前递，指令存储器和数据存储器分开），下面这段代码中，存在哪些冒险？（A）
+    \begin{center}
+    \begin{BVerbatim}[frame=single, framesep=3mm]
+    lw $1, 40($6)
+    add $6, $1, $2
+    sw $6, 50($1)
+    \end{BVerbatim}
+    \end{center}
+    \begin{enumerate}[label=\Alph*：]
+        \item 数据冒险 \item 控制冒险 \item 结构冒险 \item 指令冒险
+    \end{enumerate}
+
+    % 3
+    \item 【单选】对于典型的MIPS五级流水线处理器，即使已经对数据冒险进行了处理，下面这段代码中，哪条指令在执行前还是需要流水线停顿？（C）
+    \begin{center}
+    \begin{BVerbatim}[frame=single, framesep=3mm]
+    add $s0, $t0, $t1 
+    sub $t2, $s0, $t3 
+    lw  $t3, 40($t2) 
+    or  $t4, $t3, $t2 
+    and $t3, $t4, $t2
+    \end{BVerbatim}
+    \end{center}
+    \begin{enumerate}[label=\Alph*：]
+        \item sub \item lw \item or \item and
+    \end{enumerate}
+
+    % 4
+    \item 【单选】在延迟转移技术中，通常由谁负责在转移指令之后插入适当的指令以避免流水线停顿？ （C）
+    \begin{enumerate}[label=\Alph*：]
+        \item 处理器硬件机制 \item 操作系统内核 
+        \item 编译器 \item 转移目标缓冲器（BTB） 
+    \end{enumerate}
+
+    % 5
+    \item 【单选】为什么在使用转移目标缓冲器（BTB）预测“过程返回”（Procedure Return）等间接跳转指令时准确率较低？ （B）
+    \begin{enumerate}[label=\Alph*：]
+        \item 因为过程返回指令需要极其复杂的条件判定逻辑 
+        \item 因为每次执行同一条“过程返回”指令时，其转移目标地址往往不同 
+        \item 因为过程返回指令的目标地址永远无法在硬件中被缓存
+        \item 因为过程调用和过程返回在程序中通常不成对出现 
+    \end{enumerate}
+
+    % 6
+    \item 【多选】以下关于流水线转移预测技术的说法，哪些是不正确的？（BCD）
+    \begin{enumerate}[label=\Alph*：]
+        \item 转移目标缓冲器（BTB）中包含转移指令地址（BIA）和转移目标地址（BTA）
+        \item 转移目标缓冲器（BTB）中每个表项的内容是不可修改的
+        \item 返回地址栈（RAS）通常被存放在存储器中
+        \item 转移目标缓冲器（BTB）中转移目标地址（BTA）记录了跳转指令所对应的地址
+    \end{enumerate}
+
+    % 7
+    \item 【多选】以下关于超标量的说法，哪些是正确的？ （CE） 
+    \begin{enumerate}[label=\Alph*：]
+        \item 超标量是一种利用时间并行性的优化 
+        \item 超标量处理器是多核CPU的另一种说法 
+        \item 超标量是一种利用空间并行性的优化 
+        \item 超标量和流水线是两种独立的技术 
+        \item 超标量技术是建立在标量流水线技术基础上的
+    \end{enumerate}
+
+\end{enumerate}
+
+\vspace{1em}
+\section*{二、问答题}
+
+\begin{enumerate}[label=\arabic*.]
+    
+    % 问答 1
+    \item 处理器设计的五个步骤如下，请正确排序。（42153）
+    \begin{itemize}
+        \item[1.] 连接组件建立数据通路
+        \item[2.] 为数据通路选择合适的组件
+        \item[3.] 集成控制信号，形成完整的控制逻辑
+        \item[4.] 分析指令系统，得出对数据通路的需求
+        \item[5.] 分析每条指令的实现，以确定控制信号
+    \end{itemize}
+
+    \vspace{1em}
+    % 问答 2
+    \item 在设计处理器时，如果划分出五个相对独立的阶段，延迟分别为1ns（取指）、0.5ns（读寄存器）、1.5ns（ALU操作）、1.5ns（访存）、0.5ns（写寄存器），请回答以下问题。
+    \begin{enumerate}[label=(\arabic*)]
+        \item 如果这是一个单周期处理器，那么时钟周期应该是多少ns？
+        \item 如果这是一个多周期处理器，内部寄存器的额外延迟为0.1ns，那么lw指令和sw指令的总延迟分别为多少ns？
+        \item 如果这是一个五级流水线处理器，流水线寄存器的额外延迟为0.2ns，那么时钟周期应该是多少ns？
+        \item 在第(3)问的基础上，如果将第三阶段均匀拆分为两级，形成六级流水线处理器，那么执行一条指令的总延迟为多少ns？
+    \end{enumerate}
+
+    (1) 单周期处理器的时钟周期应为$1 + 0.5 + 1.5 + 1.5 + 0.5 = 5\,\text{ns}$。
+
+    (2) lw 需要 5 个周期：$5\times(1.5+0.1)=8.0\,\text{ns}$。
+        
+        sw 需要 4 个周期：$4\times(1.5+0.1)=6.4\,\text{ns}$。
+
+    (3) 时钟周期应该为1.7ns.
+
+    (4) 执行一条指令的总延迟为$1.7 \times 6 = 10.2\,\text{ns}$。
+
+
+    \vspace{1em}
+    % 问答 3
+    \item 如果采用延迟转移技术（延迟数为1），那么执行完下面这些指令之后，\$s1的内容是什么？
+    \begin{center}
+    \begin{BVerbatim}[frame=single, framesep=3mm]
+      xor $s1, $s1, $s1 
+      addi $t1, $t3, 1 
+      subi $t2, $t4, 2 
+      beq $t1, $t2, Next; Assume $t1 == $t2 is True 
+      addi $s1, $s1, 1 
+      addi $s1, $s1, 2 
+Next: addi $s1, $s1, 3
+    \end{BVerbatim}
+    \end{center}
+
+\end{enumerate}
+
+\end{document}
