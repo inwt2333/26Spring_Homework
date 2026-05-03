@@ -1,0 +1,89 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, color, framed, graphicx, hyperref, mathrsfs}
+\usepackage[margin=2cm]{geometry}
+
+\title{\textbf{4月29日作业}}
+\author{韩岳成 524531910029}
+\date{\today}
+\linespread{1.5}
+\definecolor{shadecolor}{RGB}{241, 241, 255}
+\newcounter{problemname}
+\newenvironment{problem}{\begin{shaded}\stepcounter{problemname}\par\noindent\textbf{题目\arabic{problemname}. }}{\end{shaded}\par}
+\newenvironment{solution}{\par\noindent\textbf{解答. }}{\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\par}
+\everymath{\displaystyle}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+    下面哪些符号串是谓词演算的公式？其中有没有闭式？
+    \begin{enumerate}
+        \item $\forall x_{2}R_{1}^{1}(x_{1})\rightarrow\neg R_{1}^{1}(x_{2})$
+        \item $R_{1}^{3}(f_{2}^{3}(x_{1},c_{2},x_{2}))$
+        \item $\neg R_{1}^{1}(x_{1})\rightarrow R_{1}^{1}(x_{2})$
+        \item $R_{1}^{3}(c_{1},c_{2},f_{1}^{1}(c_{3}))$
+    \end{enumerate}
+
+
+\end{problem}
+
+\begin{solution}
+    (1),(3), (4) 是谓词演算的公式，其中(4)是闭式。
+\end{solution}
+
+\begin{problem}
+在以下公式中，哪些$x_{1}$的出现是自由的？哪些$x_{1}$的出现是约束的？项$f_{1}^{2}(x_{1},x_{3})$对这些公式中的$x_{2}$是不是自由的？
+\[\forall x_{_2}R_{_1}^{^2}(f_{_1}^{^2}(x_{_1},x_{_2}),x_{_1})\to\forall x_{_1}R_{_2}^{^2}(x_{_3},f_{_2}^{^2}(x_{_1},x_{_2})).\]
+\end{problem}
+
+\begin{solution}
+在该公式中，$x_1$的第一，二次出现是自由的，第三，四次出现是约束的。项$f_{1}^{2}(x_{1},x_{3})$对该公式中的$x_{2}$不是自由的。
+\end{solution}
+
+\begin{problem}
+设 $t$ 是项 $f_1^2(x_1, x_3)$, $p(x_1)$ 是下面的公式. 确定 $t$ 对 $p(x_1)$ 中的 $x_1$ 是否自由? 如果是自由的, 写出 $p(t)$.
+\begin{enumerate}
+    \item $\forall x_{2}R_{1}^{1}(f_{1}^{1}(x_{2}))\to\forall x_{3}R_{1}^{3}(x_{1},x_{2},x_{3})$
+    \item $\forall x_{2}R_{1}^{3}(x_{1},f_{1}^{1}(x_{1}),x_{2})\to\forall x_{3}R_{1}^{1}(f_{1}^{2}(x_{1},x_{3}))$
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+对于(1)，不是自由的。
+
+对于(2)，不是自由的。
+\end{solution}
+
+\begin{problem}
+若项t为$f_1^2(c_1, x_1)$，重复题目3的练习。
+\end{problem}
+
+\begin{solution}
+对于(1)，是自由的，$p(t)$为$\forall x_{2}R_{1}^{1}(f_{1}^{1}(x_{2}))\to\forall x_{3}R_{1}^{3}(f_1^2(c_1, x_1),x_{2},x_{3})$。
+
+对于(2),是自由的，$p(t)$为$\forall x_{2}R_{1}^{3}(f_1^2(c_1, x_1),f_{1}^{1}(f_1^2(c_1, x_1)),x_{2})\to\forall x_{3}R_{1}^{1}(f_{1}^{2}(f_1^2(c_1, x_1),x_{3}))$。
+\end{solution}
+
+\begin{problem}
+设个体变元$x$在公式 $p(x)$ 中自由出现，个体变元$y$不在公式 $p(x)$ 中自由出现.试证，如果$y$对$p(x)$中的$x$是自由的，那么$x$对$p(y)$中的$y$也是自由的.
+\end{problem}
+
+\begin{solution}  
+
+已知 \(y\) 对 \(p(x)\) 中的 \(x\) 是自由的，即：将 \(p(x)\) 中所有自由出现的 \(x\) 替换为 \(y\) 时，所得新出现的 \(y\) 不会被任何量词 \(\forall y\) 或 \(\exists y\) 约束。  
+
+现在考虑公式 \(p(y)\)，它是将 \(p(x)\) 中所有自由 \(x\) 替换为 \(y\) 而得到的。在 \(p(y)\) 中，这些由替换得到的 \(y\) 就是 \(y\) 的自由出现（因为原 \(p(x)\) 中无自由 \(y\)）。要证 \(x\) 对 \(p(y)\) 中的 \(y\) 是自由的，即：将 \(p(y)\) 中所有自由 \(y\) 替换为 \(x\) 时，新出现的 \(x\) 不会被任何量词约束。  
+
+分析 \(p(y)\) 中的量词来自于 \(p(x)\)。  
+
+若 \(p(x)\) 中有以 \(x\) 为变元的量词（如 \(\forall x\)），则原自由 \(x\) 的出现一定不在该量词的作用域内（否则就不是自由出现）。因此，在 \(p(y)\) 中，这些位置（现为 \(y\)）也不在 \(\forall x\) 的作用域内。替换为 \(x\) 后，新的 \(x\) 仍然不在任何 \(\forall x\) 作用域内。  
+
+若 \(p(x)\) 中有以 \(y\) 为变元的量词（如 \(\forall y\)），则已知 \(y\) 对 \(p(x)\) 中的 \(x\) 是自由的，这意味着原自由 \(x\) 的出现不在任何 \(\forall y\) 或 \(\exists y\) 的作用域内。因此，在 \(p(y)\) 中，这些 \(y\) 的出现也不在这些量词的作用域内。替换为 \(x\) 后，新的 \(x\) 自然也不被这些量词约束。  
+
+其他量词与 \(x,y\) 无关，不影响替换的自由性。  
+
+因此，替换后所有新出现的 \(x\) 都是自由的，即 \(x\) 对 \(p(y)\) 中的 \(y\) 是自由的。
+\end{solution}
+\end{document}
