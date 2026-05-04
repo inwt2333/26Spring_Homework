@@ -1,0 +1,178 @@
+\documentclass[12pt, a4paper, oneside]{ctexart}
+\usepackage{amsmath, amsthm, amssymb, bm, color, framed, graphicx, hyperref, mathrsfs}
+\usepackage[margin=3 cm]{geometry}
+
+\title{\textbf{5月3日作业}}
+\author{韩岳成 524531910029}
+\date{\today}
+\linespread{1.5}
+\definecolor{shadecolor}{RGB}{241, 241, 255}
+\newcounter{problemname}
+\newenvironment{problem}{\begin{shaded}\stepcounter{problemname}\par\noindent\textbf{题目\arabic{problemname}. }}{\end{shaded}\par}
+\newenvironment{solution}{\par\noindent\textbf{解答. }}{\par}
+\newenvironment{note}{\par\noindent\textbf{题目\arabic{problemname}的注记. }}{\par}
+\everymath{\displaystyle}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+    设电子自旋的$z$分量是$\frac{\hbar}2$,求沿着与$z$轴成$\theta$角的$z^\prime$轴方向，自旋的分量等于$\frac{\hbar}2$或$-\frac{\hbar}2$ 的概率。
+\end{problem}
+
+\begin{solution}
+    已知电子初态为 $z$ 方向自旋量子数 $m_s = \frac{1}{2}$ 的态，即处于 $\hat{S}_z$ 的本征态：
+    \begin{equation*}
+        |\uparrow_z\rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+    \end{equation*}
+    
+    设 $z^\prime$ 轴方向与 $z$ 轴的夹角为 $\theta$。为了不失一般性，取方位角为 $\phi$。在 $z^\prime$ 方向上的自旋算符为 $\hat{S}_{z'} = \hat{\vec{S}} \cdot \vec{n}$，其本征态为：
+    \begin{equation*}
+        |\uparrow_{z'}\rangle = \begin{pmatrix} \cos\frac{\theta}{2} \\ e^{i\phi}\sin\frac{\theta}{2} \end{pmatrix}, \quad 
+        |\downarrow_{z'}\rangle = \begin{pmatrix} -\sin\frac{\theta}{2} \\ e^{i\phi}\cos\frac{\theta}{2} \end{pmatrix}
+    \end{equation*}
+    
+    由此可求得在 $z^\prime$ 方向上测量自旋分量时的概率：
+    
+    1. 自旋分量等于 $\frac{\hbar}{2}$ 的概率为：
+    \begin{equation*}
+        P\left(\frac{\hbar}{2}\right) = |\langle \uparrow_{z'} | \uparrow_z \rangle|^2 = \left| \begin{pmatrix} \cos\frac{\theta}{2} & e^{-i\phi}\sin\frac{\theta}{2} \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \right|^2 = \cos^2\frac{\theta}{2}
+    \end{equation*}
+    
+    2. 自旋分量等于 $-\frac{\hbar}{2}$ 的概率为：
+    \begin{equation*}
+        P\left(-\frac{\hbar}{2}\right) = |\langle \downarrow_{z'} | \uparrow_z \rangle|^2 = \left| \begin{pmatrix} -\sin\frac{\theta}{2} & e^{-i\phi}\cos\frac{\theta}{2} \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \right|^2 = \sin^2\frac{\theta}{2}
+    \end{equation*}
+\end{solution}
+
+\begin{problem}
+求解电子自旋$\hat{S}_x$、$\hat{S}_y$、$\hat{S}_z$的本征矢，并以$\hat{S}_y$的本征矢为基矢将$\hat{S}_z$的本征矢展开，测量$\hat{S}_y$可能的本征值有哪些？对应的概率是多少？平均值是什么？
+\end{problem}
+
+\begin{solution}
+    利用泡利矩阵，可写出电子自旋算符 $\hat{S}_x$、$\hat{S}_y$、$\hat{S}_z$ 在 $\hat{S}_z$ 表象下的矩阵形式：
+    \begin{equation*}
+        \hat{S}_x = \frac{\hbar}{2}\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad 
+        \hat{S}_y = \frac{\hbar}{2}\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad 
+        \hat{S}_z = \frac{\hbar}{2}\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+    \end{equation*}
+    
+    分别求解各自的本征方程 $\hat{S}_i |\psi\rangle = \lambda |\psi\rangle$ 以及特征方程 $\det(\hat{S}_i - \lambda I) = 0$：
+    
+    对于 $\hat{S}_z$，特征方程为 $\left(\frac{\hbar}{2} - \lambda\right)\left(-\frac{\hbar}{2} - \lambda\right) = 0$，可得本征值 $\lambda = \pm \frac{\hbar}{2}$。
+    当 $\lambda = \frac{\hbar}{2}$ 时，代入方程得 $\begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} = \begin{pmatrix} a \\ b \end{pmatrix}$，解得本征矢为 $|\uparrow_z\rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$；
+    当 $\lambda = -\frac{\hbar}{2}$ 时，解得本征矢为 $|\downarrow_z\rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$。
+    
+    对于 $\hat{S}_x$，特征方程 $\det(\hat{S}_x - \lambda I) = \begin{vmatrix} -\lambda & \frac{\hbar}{2} \\ \frac{\hbar}{2} & -\lambda \end{vmatrix} = \lambda^2 - \left(\frac{\hbar}{2}\right)^2 = 0$，得本征值 $\lambda = \pm \frac{\hbar}{2}$。
+    当 $\lambda = \frac{\hbar}{2}$ 时，$\frac{\hbar}{2}\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} a \\ b \end{pmatrix} \implies a=b$，归一化后得 $|\uparrow_x\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1 \end{pmatrix}$；
+    当 $\lambda = -\frac{\hbar}{2}$ 时，同理可得归一化本征矢 $|\downarrow_x\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ -1 \end{pmatrix}$。
+    
+    对于 $\hat{S}_y$，特征方程 $\det(\hat{S}_y - \lambda I) = \begin{vmatrix} -\lambda & -i\frac{\hbar}{2} \\ i\frac{\hbar}{2} & -\lambda \end{vmatrix} = \lambda^2 - \left(\frac{\hbar}{2}\right)^2 = 0$，得本征值 $\lambda = \pm \frac{\hbar}{2}$。
+    当 $\lambda = \frac{\hbar}{2}$ 时，$\frac{\hbar}{2}\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} = \frac{\hbar}{2} \begin{pmatrix} a \\ b \end{pmatrix} \implies -ib=a$，归一化后得 $|\uparrow_y\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ i \end{pmatrix}$；
+    当 $\lambda = -\frac{\hbar}{2}$ 时，同理可得归一化本征矢 $|\downarrow_y\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ -i \end{pmatrix}$。
+    
+    以 $\hat{S}_y$ 的本征矢作为基底对 $\hat{S}_z$ 的本征矢进行展开：
+
+    由于 $\begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{1}{\sqrt{2}} \left[ \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ i \end{pmatrix} + \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ -i \end{pmatrix} \right]$，可得：
+    \begin{equation*}
+        |\uparrow_z\rangle = \frac{1}{\sqrt{2}}|\uparrow_y\rangle + \frac{1}{\sqrt{2}}|\downarrow_y\rangle
+    \end{equation*}
+    同理可得：
+    \begin{equation*}
+        |\downarrow_z\rangle = -\frac{i}{\sqrt{2}}|\uparrow_y\rangle + \frac{i}{\sqrt{2}}|\downarrow_y\rangle
+    \end{equation*}
+    
+    若系统处于 $\hat{S}_z$ 的任一本征态上（无论是 $|\uparrow_z\rangle$ 还是 $|\downarrow_z\rangle$），测量 $\hat{S}_y$ 的可能结果及其对应信息如下：
+    \begin{enumerate}
+    \item 可能的本征值有 $\frac{\hbar}{2}$ 以及 $-\frac{\hbar}{2}$。
+    \item 测量出本征值 $\frac{\hbar}{2}$ 和 $-\frac{\hbar}{2}$ 的概率均为 $P = \left|\pm\frac{1}{\sqrt{2}}\right|^2 = \frac{1}{2}$（或者 $\left|\pm\frac{i}{\sqrt{2}}\right|^2 = \frac{1}{2}$），即各占一半（$50\%$ 的概率）。
+    \item 测量值的平均值（期望）为：
+    \begin{equation*}
+        \langle \hat{S}_y \rangle = \frac{\hbar}{2} \cdot \frac{1}{2} + \left(-\frac{\hbar}{2}\right) \cdot \frac{1}{2} = 0
+    \end{equation*}
+    \end{enumerate}
+\end{solution}
+
+\begin{problem}
+氢原子处于 $n=3,l=2$ 的激发态时 ,原子的轨道角动量在空间有哪些可能取向？并计算各种可能取向的角动量与$z$轴的夹角。
+\end{problem}
+
+\begin{solution}
+    已知氢原子处在 $n=3$, $l=2$ 的激发态。根据量子力学关于角动量的规则，轨道角动量的大小为：
+    \begin{equation*}
+        |\vec{L}| = \sqrt{l(l+1)}\hbar = \sqrt{2(2+1)}\hbar = \sqrt{6}\hbar
+    \end{equation*}
+    
+    轨道角动量在 $z$ 轴上的投影（分量）为：
+    \begin{equation*}
+        L_z = m\hbar
+    \end{equation*}
+    由于磁量子数 $m$ 的取值为 $-l, -l+1, \cdots, l$，对于 $l=2$，可能取值为 $m = 0, \pm 1, \pm 2$。因此，角动量在空间中有 $5$ 种可能的取向。
+    
+    设角动量 $\vec{L}$ 与 $z$ 轴的夹角为 $\theta$，则有：
+    \begin{equation*}
+        \cos\theta = \frac{L_z}{|\vec{L}|} = \frac{m\hbar}{\sqrt{6}\hbar} = \frac{m}{\sqrt{6}}
+    \end{equation*}
+    
+    对应 $5$ 种可能取向的角度分别为：
+    \begin{itemize}
+        \item 当 $m=2$ 时，$\cos\theta_{2} = \frac{2}{\sqrt{6}} = \sqrt{\frac{2}{3}}$，夹角为 $\theta_2 = \arccos\left(\sqrt{\frac{2}{3}}\right)$。
+        \item 当 $m=1$ 时，$\cos\theta_{1} = \frac{1}{\sqrt{6}}$，夹角为 $\theta_1 = \arccos\left(\frac{1}{\sqrt{6}}\right)$。
+        \item 当 $m=0$ 时，$\cos\theta_{0} = 0$，夹角为 $\theta_0 = \frac{\pi}{2}$。
+        \item 当 $m=-1$ 时，$\cos\theta_{-1} = -\frac{1}{\sqrt{6}}$，夹角为 $\theta_{-1} = \arccos\left(-\frac{1}{\sqrt{6}}\right)$。
+        \item 当 $m=-2$ 时，$\cos\theta_{-2} = -\frac{2}{\sqrt{6}} = -\sqrt{\frac{2}{3}}$，夹角为 $\theta_{-2} = \arccos\left(-\sqrt{\frac{2}{3}}\right)$。
+    \end{itemize}
+\end{solution}
+\begin{problem}
+氢原子能量本征函数为$\psi_{nlm_l}$,能量本征值为$E_n$,其中 $n$ 为主量子数，$l$ 为角量子数， $m_l$为磁量子数。在$t=0$时，氢原子的波函数为$\Psi(r,0)=\frac1{\sqrt{10}}(\psi_{100}+2\psi_{210}+\sqrt{3}\psi_{211}+$ $\sqrt{2}\psi_{21-1})$,不考虑自旋。
+\begin{enumerate}
+    \item 写出任意时刻$t$体系的波函数$\psi(\vec{r},t);$
+    \item 求任意时刻$t$ 体系处于$l=1,m_l=1$ 态的概率；
+    \item 求任意时刻$t$体系处于$m_l=0$态的概率，
+    \item 求任意时刻$t$ 体系的平均能量，角动量平方算符的平均值及角动量$z$ 分量算符的平均值.
+\end{enumerate}
+\end{problem}
+
+\begin{solution}
+    已知在 $t=0$ 时波函数为：
+    \begin{equation*}
+        \Psi(\vec{r},0) = \frac{1}{\sqrt{10}}\psi_{100} + \frac{2}{\sqrt{10}}\psi_{210} + \sqrt{\frac{3}{10}}\psi_{211} + \sqrt{\frac{2}{10}}\psi_{21-1}
+    \end{equation*}
+    此状态中的各个本征态 $\psi_{nlm_l}$ 对应的能量只由主量子数 $n$ 决定：对于 $\psi_{100}$，能量为 $E_1$；对于 $\psi_{210}, \psi_{211}, \psi_{21-1}$，能量均为 $E_2$。
+    
+    1. 随时间的演化只是在各个平稳态上乘上时间依赖因子 $e^{-iE_nt/\hbar}$。所以任意时刻 $t$ 的波函数为：
+    \begin{equation*}
+        \Psi(\vec{r},t) = \frac{1}{\sqrt{10}}\psi_{100}e^{-i\frac{E_1t}{\hbar}} + \frac{2}{\sqrt{10}}\psi_{210}e^{-i\frac{E_2t}{\hbar}} + \sqrt{\frac{3}{10}}\psi_{211}e^{-i\frac{E_2t}{\hbar}} + \sqrt{\frac{2}{10}}\psi_{21-1}e^{-i\frac{E_2t}{\hbar}}
+    \end{equation*}
+    
+    2. 要得到处于 $l=1, m_l=1$ 态的概率，考察波函数中对于该量子数的部分，显然只有项 $\psi_{211}$ 满足（因为它的 $l=1, m_l=1$）。该状态出现的概率为对应系数模的平方：
+    \begin{equation*}
+        P_{(l=1,m_l=1)} = \left| \sqrt{\frac{3}{10}} e^{-i\frac{E_2t}{\hbar}} \right|^2 = \frac{3}{10}
+    \end{equation*}
+    
+    3. 处于 $m_l=0$ 态意味着只需要满足磁量子数为 $0$ 即可。波函数中有两项符合，即 $\psi_{100}$ 和 $\psi_{210}$。由于这两个态互相正交，处于这两个状态的概率相互独立：
+    \begin{equation*}
+        P_{(m_l=0)} = P_{100} + P_{210} = \left| \frac{1}{\sqrt{10}} e^{-i\frac{E_1t}{\hbar}} \right|^2 + \left| \frac{2}{\sqrt{10}} e^{-i\frac{E_2t}{\hbar}} \right|^2 = \frac{1}{10} + \frac{4}{10} = \frac{1}{2}
+    \end{equation*}
+    
+    4. 首先，确认每个项的概率为：$P_{100} = 0.1, P_{210} = 0.4, P_{211} = 0.3, P_{21-1} = 0.2$。总概率为 $1$，波函数已归一。
+    
+    计算平均能量（不随时间改变的常数）：
+    \begin{equation*}
+        \langle \hat{H} \rangle = P_{100}E_1 + (P_{210} + P_{211} + P_{21-1})E_2 = \frac{1}{10}E_1 + \left(\frac{4}{10} + \frac{3}{10} + \frac{2}{10}\right)E_2 = \frac{1}{10}E_1 + \frac{9}{10}E_2
+    \end{equation*}
+    
+    计算角动量平方算符的平均值（守恒量）：
+    对应量子数为 $l=0$（第一项）以及 $l=1$（后三项）。使用特征值 $l(l+1)\hbar^2$ 计算期望：
+    \begin{equation*}
+        \langle \hat{L}^2 \rangle = \frac{1}{10}(0) + \left(\frac{4}{10} + \frac{3}{10} + \frac{2}{10}\right) \times [1(1+1)\hbar^2] = \frac{9}{10} \times 2\hbar^2 = \frac{9}{5}\hbar^2
+    \end{equation*}
+    
+    计算角动量 $z$ 分量算符的平均值 $\langle \hat{L}_z \rangle$：
+    依据本征值 $m_l\hbar$ 计算期望：
+    \begin{equation*}
+        \langle \hat{L}_z \rangle = P_{100}(0) + P_{210}(0) + P_{211}(1\cdot\hbar) + P_{21-1}(-1\cdot\hbar) = 0 + 0 + \frac{3}{10}\hbar - \frac{2}{10}\hbar = \frac{1}{10}\hbar
+    \end{equation*}
+\end{solution}
+\end{document}
